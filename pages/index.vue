@@ -2,21 +2,21 @@
     <div class="flex flex-col gap-6">
         <p class="mainHeading">Почему вам стоит выбрать именно нас?</p>
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-            <div class="flex flex-col p-4 border border-[#f9f9f9]/70 rounded-xl gap-4">
+            <div class="flex flex-col p-4 border border-[#f9f9f9]/70 rounded-xl gap-4 transition-all duration-500 hover:bg-[#191919]">
                 <div class="flex items-center justify-between gap-4 text-red-500">
                     <p class="text-2xl tracking-wider">Индивидуальный подход</p>
                     <Icon class="text-3xl" name="material-symbols:person"/>
                 </div>
                 <p class="grow">Мы понимаем, что каждый бизнес уникален. Поэтому наши стратегии разрабатываются с учётом ваших целей, аудитории и особенностей рынка.</p>
             </div>
-            <div class="flex flex-col p-4 border border-[#f9f9f9]/70 rounded-xl gap-4">
+            <div class="flex flex-col p-4 border border-[#f9f9f9]/70 rounded-xl gap-4 transition-all duration-500 hover:bg-[#191919]">
                 <div class="flex items-center justify-between gap-4 text-red-500">
                     <p class="text-2xl tracking-wider">Комплексные решения</p>
                     <Icon class="text-3xl" name="carbon:decision-tree"/>
                 </div>
                 <p class="grow">От разработки брендинга до запуска масштабных рекламных кампаний — мы предлагаем полный спектр услуг, чтобы вам не приходилось искать подрядчиков в разных местах.</p>
             </div>
-            <div class="flex flex-col p-4 border border-[#f9f9f9]/70 rounded-xl gap-4">
+            <div class="flex flex-col p-4 border border-[#f9f9f9]/70 rounded-xl gap-4 transition-all duration-500 hover:bg-[#191919]">
                 <div class="flex items-center justify-between gap-4 text-red-500">
                     <p class="text-2xl tracking-wider">Прозрачность</p>
                     <Icon class="text-3xl" name="mdi:circle-opacity"/>
@@ -73,6 +73,35 @@
             <NuxtLink to="https://www.tbwa.com" target="_blank" class="w-full rounded-xl overflow-hidden transition-all duration-500 hover:scale-105 bg-white">
                 <img src="/images/partners/8.webp" alt="" class="object-cover aspect-video w-full">
             </NuxtLink>
+        </div>
+    </div>
+    <div class="flex flex-col gap-6">
+        <p class="mainHeading">Портфолио</p>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="flex flex-col w-full border-x border-b border-[#f9f9f9]/70 rounded-xl">
+                <img src="/images/portfolio/1.jpg" alt="" class="rounded-t-xl aspect-video w-full object-cover">
+                <p class="px-4 py-2 rounded-b-xl bg-[#191919]">Создание сайта для интернет-продукта под названием “Kek.net”</p>
+            </div>
+            <div class="flex flex-col w-full border-x border-b border-[#f9f9f9]/70 rounded-xl">
+                <img src="/images/portfolio/2.jpg" alt="" class="rounded-t-xl aspect-video w-full object-cover">
+                <p class="px-4 py-2 rounded-b-xl bg-[#191919]">3D визуализация интерьерной студии в столице России — Москве</p>
+            </div>
+            <div class="flex flex-col w-full border-x border-b border-[#f9f9f9]/70 rounded-xl">
+                <img src="/images/portfolio/3.jpg" alt="" class="rounded-t-xl aspect-video w-full object-cover">
+                <p class="px-4 py-2 rounded-b-xl bg-[#191919]">Создание нового логотипа для крупной рекламной компании</p>
+            </div>
+            <div class="flex flex-col w-full border-x border-b border-[#f9f9f9]/70 rounded-xl">
+                <img src="/images/portfolio/4.jpg" alt="" class="rounded-t-xl aspect-video w-full object-cover">
+                <p class="px-4 py-2 rounded-b-xl bg-[#191919]">Разработка стиля компании, что производит платы для электроники</p>
+            </div>
+            <div class="flex flex-col w-full border-x border-b border-[#f9f9f9]/70 rounded-xl">
+                <img src="/images/portfolio/5.jpg" alt="" class="rounded-t-xl aspect-video w-full object-cover">
+                <p class="px-4 py-2 rounded-b-xl bg-[#191919]">Создание интернет-магазина брендовой и стильной детской одежды</p>
+            </div>
+            <div class="flex flex-col w-full border-x border-b border-[#f9f9f9]/70 rounded-xl">
+                <img src="/images/portfolio/6.jpg" alt="" class="rounded-t-xl aspect-video w-full object-cover">
+                <p class="px-4 py-2 rounded-b-xl bg-[#191919]">Реклама проекта по защите природы в сетях и на публичных платформах</p>
+            </div>
         </div>
     </div>
 </template>
