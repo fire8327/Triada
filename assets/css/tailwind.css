@@ -38,3 +38,33 @@
 .mainHeading {
     @apply text-3xl font-Cormorant tracking-widest font-semibold
 }
+
+:root {  
+    --purple: rgb(123, 31, 162);
+    --violet: rgb(103, 58, 183);
+    --pink: rgb(244, 143, 177);
+    }
+
+@keyframes background-pan {
+    from {
+        background-position: 0% center;
+    }
+
+    to {
+        background-position: -200% center;
+    }
+}
+
+.animate-text {
+    animation: background-pan 5s linear infinite;
+    background: linear-gradient(
+        to right,
+        var(--pink),
+        var(--purple),
+        var(--violet),
+        var(--pink)
+    );
+    background-size: 200%;
+    -webkit-text-fill-color: transparent;
+    white-space: nowrap;
+}

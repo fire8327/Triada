@@ -4,9 +4,9 @@
         <div class="flex max-lg:flex-col gap-6">
             <img src="/images/about/main.jpg" alt="" class="w-full lg:w-1/2 mx-auto rounded-xl">
             <div class="flex flex-col gap-2 w-full lg:w-1/2">
-                <p><span class="text-red-500 font-medium">Triada</span> — это рекламное агентство полного цикла, специализирующееся на разработке стратегий, которые делают бренды яркими и запоминающимися. Мы предоставляем полный спектр услуг, включая брендинг, digital-маркетинг, медиапланирование и креативное сопровождение.</p>
-                <p><span class="text-red-500 font-medium">Наша миссия</span> — помочь вашему бизнесу достичь новых высот. Мы работаем с клиентами разного масштаба: от стартапов до крупных компаний. Благодаря индивидуальному подходу, глубокому анализу рынка и использованию современных технологий, мы создаём решения, которые действительно работают.</p>
-                <p><span class="text-red-500 font-medium">Команда Triada</span> — это профессионалы, которые готовы стать вашим надёжным партнёром в мире рекламы и маркетинга. Вместе мы сделаем ваш бренд сильнее и ближе к вашей аудитории.</p>
+                <p><span class="animate-text text-transparent !bg-clip-text font-medium">Triada</span> — это рекламное агентство полного цикла, специализирующееся на разработке стратегий, которые делают бренды яркими и запоминающимися. Мы предоставляем полный спектр услуг, включая брендинг, digital-маркетинг, медиапланирование и креативное сопровождение.</p>
+                <p><span class="animate-text text-transparent !bg-clip-text font-medium">Наша миссия</span> — помочь вашему бизнесу достичь новых высот. Мы работаем с клиентами разного масштаба: от стартапов до крупных компаний. Благодаря индивидуальному подходу, глубокому анализу рынка и использованию современных технологий, мы создаём решения, которые действительно работают.</p>
+                <p><span class="animate-text text-transparent !bg-clip-text font-medium">Команда Triada</span> — это профессионалы, которые готовы стать вашим надёжным партнёром в мире рекламы и маркетинга. Вместе мы сделаем ваш бренд сильнее и ближе к вашей аудитории.</p>
             </div>
         </div>
     </div>
@@ -15,7 +15,7 @@
             <p class="mainHeading">Контакты</p>
             <div class="flex flex-col gap-2">
                 <p class="text-sm text-gray-400">Адрес</p>
-                <p class="font-Cormorant font-semibold">улица Московский проспект, дом 29</p>
+                <p class="font-Cormorant font-semibold">улица Пушкина, дом 1</p>
             </div>
             <div>
                 <p class="text-sm text-gray-400">Режим работы</p>
@@ -24,20 +24,20 @@
             </div>
             <div class="flex flex-col gap-2">
                 <p class="text-sm text-gray-400">Email</p>
-                <NuxtLink to="mailto:triada@mail.ru" class="font-Cormorant font-semibold transition-all duration-500 hover:text-red-500">triada@mail.ru</NuxtLink>
+                <NuxtLink to="mailto:triada@mail.ru" class="font-Cormorant font-semibold transition-all duration-500 hover:text-[#673ab7]">triada@mail.ru</NuxtLink>
             </div>
             <div class="flex flex-col gap-2">
                 <p class="text-sm text-gray-400">Телефон для связи</p>
-                <NuxtLink to="tel:8 800-555-35-35" class="font-Cormorant font-semibold transition-all duration-500 hover:text-red-500">8 800-555-35-35</NuxtLink>
+                <NuxtLink to="tel:8 800-555-35-35" class="font-Cormorant font-semibold transition-all duration-500 hover:text-[#673ab7]">8 800-555-35-35</NuxtLink>
             </div>
             <div class="flex items-center gap-2">
-                <NuxtLink to="https://vk.com/" target="_blank" class="transition-all duration-500 hover:text-red-500">
+                <NuxtLink to="https://vk.com/" target="_blank" class="transition-all duration-500 hover:text-[#673ab7]">
                     <Icon class="text-3xl" name="mdi:vk"/>
                 </NuxtLink>
-                <NuxtLink to="https://t.me/" target="_blank" class="transition-all duration-500 hover:text-red-500">
+                <NuxtLink to="https://t.me/" target="_blank" class="transition-all duration-500 hover:text-[#673ab7]">
                     <Icon class="text-3xl" name="ic:baseline-telegram"/>
                 </NuxtLink>
-                <NuxtLink to="https://www.instagram.com/" target="_blank" class="transition-all duration-500 hover:text-red-500">
+                <NuxtLink to="https://www.instagram.com/" target="_blank" class="transition-all duration-500 hover:text-[#673ab7]">
                     <Icon class="text-3xl" name="basil:instagram-outline"/>
                 </NuxtLink>
             </div>
