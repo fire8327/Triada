@@ -28,29 +28,29 @@
     <div class="flex flex-col gap-6">
         <p class="mainHeading">Наши партнёры</p>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <NuxtLink to="https://www.ogilvy.com/" target="_blank" class="w-full rounded-xl overflow-hidden transition-all duration-500 hover:scale-105">
-                <img src="/images/partners/1.jpg" alt="" class="aspect-video object-cover w-full">
+            <NuxtLink to="https://www.ogilvy.com/" target="_blank" class="w-full rounded-xl overflow-hidden transition-all duration-500 hover:scale-105 bg-white">
+                <img src="/images/partners/1.jpg" alt="" class="object-cover aspect-video w-full">
             </NuxtLink>
-            <NuxtLink to="https://www.bbdo.com" target="_blank" class="w-full rounded-xl overflow-hidden transition-all duration-500 hover:scale-105">
-                <img src="/images/partners/2.jpg" alt="" class="aspect-video object-cover w-full">
+            <NuxtLink to="https://www.bbdo.com" target="_blank" class="w-full rounded-xl overflow-hidden transition-all duration-500 hover:scale-105 bg-white">
+                <img src="/images/partners/2.webp" alt="" class="object-cover aspect-video w-full">
             </NuxtLink>
-            <NuxtLink to="https://www.dentsu.com" target="_blank" class="w-full rounded-xl overflow-hidden transition-all duration-500 hover:scale-105">
-                <img src="/images/partners/3.jpg" alt="" class="aspect-video object-cover w-full">
+            <NuxtLink to="https://www.dentsu.com" target="_blank" class="w-full rounded-xl overflow-hidden transition-all duration-500 hover:scale-105 bg-white">
+                <img src="/images/partners/3.png" alt="" class="object-cover aspect-video w-full">
             </NuxtLink>
-            <NuxtLink to="https://www.wundermanthompson.com" target="_blank" class="w-full rounded-xl overflow-hidden transition-all duration-500 hover:scale-105">
-                <img src="/images/partners/4.jpg" alt="" class="aspect-video object-cover w-full">
+            <NuxtLink to="https://www.wundermanthompson.com" target="_blank" class="w-full rounded-xl overflow-hidden transition-all duration-500 hover:scale-105 bg-white">
+                <img src="/images/partners/4.webp" alt="" class="object-cover aspect-video w-full">
             </NuxtLink>
-            <NuxtLink to="https://www.mccannworldgroup.com" target="_blank" class="w-full rounded-xl overflow-hidden transition-all duration-500 hover:scale-105">
-                <img src="/images/partners/5.jpg" alt="" class="aspect-video object-cover w-full">
+            <NuxtLink to="https://www.mccannworldgroup.com" target="_blank" class="w-full rounded-xl overflow-hidden transition-all duration-500 hover:scale-105 bg-white">
+                <img src="/images/partners/5.png" alt="" class="object-cover aspect-video w-full">
             </NuxtLink>
-            <NuxtLink to="https://www.havas.com" target="_blank" class="w-full rounded-xl overflow-hidden transition-all duration-500 hover:scale-105">
-                <img src="/images/partners/6.jpg" alt="" class="aspect-video object-cover w-full">
+            <NuxtLink to="https://www.havas.com" target="_blank" class="w-full rounded-xl overflow-hidden transition-all duration-500 hover:scale-105 bg-white">
+                <img src="/images/partners/6.webp" alt="" class="object-cover aspect-video w-full">
             </NuxtLink>
-            <NuxtLink to="https://www.leoburnett.com" target="_blank" class="w-full rounded-xl overflow-hidden transition-all duration-500 hover:scale-105">
-                <img src="/images/partners/7.jpg" alt="" class="aspect-video object-cover w-full">
+            <NuxtLink to="https://www.leoburnett.com" target="_blank" class="w-full rounded-xl overflow-hidden transition-all duration-500 hover:scale-105 bg-white">
+                <img src="/images/partners/7.png" alt="" class="object-cover aspect-video w-full">
             </NuxtLink>
-            <NuxtLink to="https://www.tbwa.com" target="_blank" class="w-full rounded-xl overflow-hidden transition-all duration-500 hover:scale-105">
-                <img src="/images/partners/8.jpg" alt="" class="aspect-video object-cover w-full">
+            <NuxtLink to="https://www.tbwa.com" target="_blank" class="w-full rounded-xl overflow-hidden transition-all duration-500 hover:scale-105 bg-white">
+                <img src="/images/partners/8.webp" alt="" class="object-cover aspect-video w-full">
             </NuxtLink>
         </div>
     </div>
