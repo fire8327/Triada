@@ -4,7 +4,7 @@
 
 @layer base {
     #__nuxt{
-        @apply flex flex-col min-h-screen bg-[#131313] text-[#f9f9f9] text-xl
+        @apply flex flex-col min-h-screen bg-[#131313] text-[#f9f9f9] text-xl bg-[url(/images/body/bg_black.png)] bg-fixed
     }
         
     :root{

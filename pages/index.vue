@@ -1,7 +1,7 @@
 <template>
     <div class="flex flex-col gap-6">
         <p class="mainHeading">Почему вам стоит выбрать именно нас?</p>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
             <div class="flex flex-col p-4 border border-[#f9f9f9]/70 rounded-xl gap-4">
                 <div class="flex items-center justify-between gap-4 text-red-500">
                     <p class="text-2xl tracking-wider">Индивидуальный подход</p>
@@ -22,6 +22,27 @@
                     <Icon class="text-3xl" name="mdi:circle-opacity"/>
                 </div>
                 <p class="grow">Мы регулярно предоставляем отчёты о проделанной работе и достигнутых результатах. Ваша инвестиция в рекламу работает эффективно.</p>
+            </div>
+        </div>
+    </div>
+    <div class="flex flex-col gap-6">
+        <p class="mainHeading">О компании</p>
+        <div class="flex max-lg:flex-col gap-6">
+            <img src="/images/about/main.jpg" alt="" class="w-full lg:w-1/2 rounded-xl">
+            <div class="flex flex-col gap-4 w-full lg:w-1/2">
+                <p>
+                    Triada — рекламное агентство полного цикла. Мы создаём эффективные стратегии, которые помогают бизнесу расти и выделяться. Индивидуальный подход, креатив и инновации — наши главные принципы.
+                </p>
+                <ul class="list-inside list-disc">
+                    <li>Индивидуальный подход</li>
+                    <li>Креативные решения</li>
+                    <li>Прозрачность и доверие</li>
+                    <li>Инновационные технологии</li>
+                    <li>Ориентация на результат</li>
+                    <li>Высокое качество работы</li>
+                    <li>Партнёрство на годы</li>
+                    <li>Социальная ответственность</li>
+                </ul>
             </div>
         </div>
     </div>
