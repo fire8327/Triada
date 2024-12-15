@@ -4,7 +4,7 @@
 
 @layer base {
     #__nuxt{
-        @apply flex flex-col min-h-screen bg-[#131313] text-white text-xl
+        @apply flex flex-col min-h-screen bg-[#131313] text-[#f9f9f9] text-xl
     }
         
     :root{
@@ -33,4 +33,8 @@
     .container{        
         @apply max-w-[var(--widthContent)]
     } 
+}
+
+.mainHeading {
+    @apply text-3xl font-Cormorant tracking-widest font-semibold
 }
