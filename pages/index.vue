@@ -45,6 +45,7 @@
                 </ul>
             </div>
         </div>
+        <NuxtLink to="/about" class="px-4 py-2 border border-[#673ab7] text-[#673ab7] rounded-full w-[160px] text-center transition-all duration-500 hover:text-white hover:bg-[#673ab7] self-end">Подробнее</NuxtLink>
     </div>
     <div class="flex flex-col gap-6">
         <p class="mainHeading">Наши партнёры</p>
