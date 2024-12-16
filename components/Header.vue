@@ -32,7 +32,7 @@
     /* закрытие мобильного меню */
     const nuxtApp = useNuxtApp()
     nuxtApp.hook('page:start', () => {
-        isMenuhSow.value = false
+        isMenuShow.value = false
     })
 
 
