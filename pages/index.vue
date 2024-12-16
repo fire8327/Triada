@@ -4,21 +4,21 @@
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
             <div class="flex flex-col p-4 border border-[#f9f9f9]/30 rounded-xl gap-4 transition-all duration-500 hover:bg-[#191919]">
                 <div class="flex items-center justify-between gap-4">
-                    <p class="text-2xl tracking-wider animate-text text-transparent !bg-clip-text">Индивидуальный подход</p>
+                    <p class="text-2xl">Индивидуальный подход</p>
                     <Icon class="text-3xl text-[#673ab7]" name="material-symbols:person"/>
                 </div>
                 <p class="grow">Мы понимаем, что каждый бизнес уникален. Поэтому наши стратегии разрабатываются с учётом ваших целей, аудитории и особенностей рынка.</p>
             </div>
             <div class="flex flex-col p-4 border border-[#f9f9f9]/30 rounded-xl gap-4 transition-all duration-500 hover:bg-[#191919]">
                 <div class="flex items-center justify-between gap-4">
-                    <p class="text-2xl tracking-wider animate-text text-transparent !bg-clip-text">Комплексные решения</p>
+                    <p class="text-2xl">Комплексные решения</p>
                     <Icon class="text-3xl text-[#673ab7]" name="carbon:decision-tree"/>
                 </div>
                 <p class="grow">От разработки брендинга до запуска масштабных рекламных кампаний — мы предлагаем полный спектр услуг, чтобы вам не приходилось искать подрядчиков в разных местах.</p>
             </div>
             <div class="flex flex-col p-4 border border-[#f9f9f9]/30 rounded-xl gap-4 transition-all duration-500 hover:bg-[#191919]">
                 <div class="flex items-center justify-between gap-4">
-                    <p class="text-2xl tracking-wider animate-text text-transparent !bg-clip-text">Прозрачность</p>
+                    <p class="text-2xl">Прозрачность</p>
                     <Icon class="text-3xl text-[#673ab7]" name="mdi:circle-opacity"/>
                 </div>
                 <p class="grow">Мы регулярно предоставляем отчёты о проделанной работе и достигнутых результатах. Ваша инвестиция в рекламу работает эффективно.</p>
