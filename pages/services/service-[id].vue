@@ -1,5 +1,6 @@
 <template>
     <div class="flex flex-col gap-6 items-center text-center">
+        <NuxtLink to="/services" class="self-start px-4 py-2 rounded-xl border border-white/10 shadow-[0px_0px_13px_-7px_white] bg-[#191919]">Вернуться назад</NuxtLink>
         <p class="mainHeading">Услуга: Разработка веб-сайтов</p>
         <p class="text-lg text-gray-400 max-w-2xl">Мы создаем высококачественные, функциональные и адаптивные сайты, которые помогут вам вывести бизнес на новый уровень.</p>
     </div>
