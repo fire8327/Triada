@@ -48,7 +48,7 @@
         <NuxtLink to="/about" class="px-4 py-2 border border-[#673ab7] text-[#673ab7] rounded-full w-[160px] text-center transition-all duration-500 hover:text-white hover:bg-[#673ab7] self-end">Подробнее</NuxtLink>
     </div>
     <div class="flex flex-col gap-6">
-        <p class="mainHeading">Примеры услуг</p>
+        <p class="mainHeading">Наши услуги</p>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             <NuxtLink to="/" class="flex flex-col gap-4 bg-[#252525] rounded-xl p-6 border border-white/10 shadow-[0px_0px_13px_-7px_white] transition-all duration-500 hover:shadow-none">
                 <div class="w-16 h-16 flex items-center justify-center p-2 bg-[#673ab7] rounded-full">
