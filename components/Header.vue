@@ -8,6 +8,7 @@
                 <NuxtLink to="/">Главная</NuxtLink>
                 <NuxtLink to="/services">Услуги</NuxtLink>
                 <NuxtLink to="/about">О нас</NuxtLink>
+                <NuxtLink to="/reviews">Отзывы</NuxtLink>
                 <NuxtLink to="/payment">Способы оплаты</NuxtLink>
                 <NuxtLink to="/admin" v-if="role == 'admin'">Админ панель</NuxtLink>
                 <div class="flex items-center gap-4">
