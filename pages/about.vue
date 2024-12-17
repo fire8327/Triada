@@ -2,7 +2,7 @@
     <div class="flex flex-col gap-6">
         <p class="mainHeading">О компании</p>
         <div class="flex max-lg:flex-col gap-6">
-            <img src="/images/about/main.jpg" alt="" class="w-full lg:w-1/2 mx-auto rounded-xl">
+            <img src="/images/about/main.jpg" alt="" class="w-full lg:w-1/2 mx-auto rounded-xl object-cover">
             <div class="flex flex-col gap-2 w-full lg:w-1/2">
                 <p><span class="animate-text text-transparent !bg-clip-text font-medium">Triada</span> — это рекламное агентство полного цикла, специализирующееся на разработке стратегий, которые делают бренды яркими и запоминающимися. Мы предоставляем полный спектр услуг, включая брендинг, digital-маркетинг, медиапланирование и креативное сопровождение.</p>
                 <p><span class="animate-text text-transparent !bg-clip-text font-medium">Наша миссия</span> — помочь вашему бизнесу достичь новых высот. Мы работаем с клиентами разного масштаба: от стартапов до крупных компаний. Благодаря индивидуальному подходу, глубокому анализу рынка и использованию современных технологий, мы создаём решения, которые действительно работают.</p>

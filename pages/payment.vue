@@ -17,7 +17,7 @@
             </div>
             <div class="w-full h-px bg-[#f9f9f9]"></div>
         </div>
-        <p class="text-center text-2xl"><span class="animate-text text-transparent !bg-clip-text">Triada</span> — удобство и доверие на каждом этапе сотрудничества.</p>
+        <p class="text-center"><span class="animate-text text-transparent !bg-clip-text font-semibold">Triada</span> — удобство и доверие на каждом этапе сотрудничества.</p>
     </div>
 </template>
 
