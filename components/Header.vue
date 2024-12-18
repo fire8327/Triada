@@ -22,6 +22,10 @@
                 <Icon class="text-3xl text-[#673ab7]" name="ph:list-bold"/>
             </button>
         </div>
+        <button type="button" @click="messageTitle = null" class="fixed top-10 right-10 z-[11] cursor-pointer flex items-center gap-2 px-6 py-2 text-lg rounded-xl w-fit bg-[#252525] border border-white/10 shadow-[0px_0px_13px_-7px_white]" :class="messageType ? ' text-white' : 'text-red-500'" v-if="messageTitle">
+            <Icon class="text-3xl" name="material-symbols:close-small-rounded"/>
+            <span>{{messageTitle}}</span>
+        </button>
     </header>
 </template>
 
@@ -46,4 +50,12 @@
             html.classList.remove('overflow-y-hidden')// Восстанавливаем скролл
         }
     })
+
+
+    /* создание сообщений */
+    const { messageTitle, messageType } = storeToRefs(useMessagesStore())
+
+    
+    /* проверка входа */
+    const { authenticated, role } = storeToRefs(useUserStore())
 </script>
