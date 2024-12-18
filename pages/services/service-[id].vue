@@ -20,7 +20,7 @@
         <div class="flex flex-col gap-2 text-gray-400 text-lg">
             <p>{{ data[0].fullDesc }}</p>
         </div>
-        <button v-if="authenticated" class="px-4 py-2 border border-[#673ab7] text-[#673ab7] rounded-full w-fit text-center transition-all duration-500 hover:text-white hover:bg-[#673ab7] self-end">Оставить заявку</button>
+        <button v-if="authenticated" @click="startTimer" :disabled="isTimerActive" class="px-4 py-2 border border-[#673ab7] text-[#673ab7] rounded-full w-fit text-center transition-all duration-500 hover:text-white hover:bg-[#673ab7] self-end">{{ timer > 0 ? `Заявка отправится через ${timer} секунд` : "Отправить заявку" }}</button>
         <p v-else class="text-lg text-gray-400 self-end">*Для оформления заявки войдти в аккаунт</p>
     </div>
 
@@ -50,4 +50,24 @@
 
     /* создание сообщений */
     const { showMessage } = useMessagesStore()
+
+
+    /* таймер на отправку */
+    const timer = ref(0)
+    const isTimerActive = ref(false)
+
+    function startTimer() {
+        if (isTimerActive.value) return
+        timer.value = 5
+        isTimerActive.value = true
+
+        const interval = setInterval(() => {
+            timer.value -= 1
+            if (timer.value <= 0) {
+                clearInterval(interval)
+                isTimerActive.value = false
+                alert("Заявка отправлена!")
+            }
+        }, 1000);
+    }
 </script>
