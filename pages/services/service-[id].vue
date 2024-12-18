@@ -55,6 +55,24 @@
     const { showMessage } = useMessagesStore()
 
 
+    /* создание функции на отправку */
+    const createBid = async () => {
+        const { data, error } = await supabase
+        .from('bids')
+        .insert([
+            { userId: id.value, serviceId: route.params.id }
+        ])
+        .select()
+
+        if (data) {
+            console.log(data)
+            showMessage('Завка отправлена!', true)
+        } else {      
+            showMessage('Произошла ошибка!', false)
+        }
+    }
+
+
     /* таймер на отправку */
     const timer = ref(0)
     const isTimerActive = ref(false)
@@ -71,7 +89,8 @@
             if (timer.value <= 0) {
                 clearInterval(timerInterval)
                 isTimerActive.value = false
-                alert("Заявка отправлена!")
+                
+                createBid() // использование функции отправки
             }
         }, 1000)
     }
