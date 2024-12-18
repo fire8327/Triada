@@ -42,7 +42,7 @@
 	})
 
 
-    /* подключение БД и роутера */
+    /* подключение БД */
     const supabase = useSupabaseClient()
 
     const { data, error } = await supabase
