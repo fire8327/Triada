@@ -5,47 +5,12 @@
             В <span class="animate-text text-transparent !bg-clip-text font-medium">Triada</span> мы предлагаем полный спектр услуг в сфере маркетинга, разработки и дизайна, чтобы помочь вашему бизнесу выделиться на фоне конкурентов. Мы стремимся к созданию уникальных решений, которые идеально подходят под ваши цели.
         </p>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <NuxtLink to="/" class="flex flex-col gap-4 bg-[#252525] rounded-xl p-6 border border-white/10 shadow-[0px_0px_13px_-7px_white] transition-all duration-500 hover:shadow-none">
+            <NuxtLink v-for="service in data" :to="`/services/service-${service.id}`" class="flex flex-col gap-4 bg-[#252525] rounded-xl p-6 border border-white/10 shadow-[0px_0px_13px_-7px_white] transition-all duration-500 hover:shadow-none">
                 <div class="w-16 h-16 flex items-center justify-center p-2 bg-[#673ab7] rounded-full">
-                    <Icon class="text-3xl" name="material-symbols:brand-family"/>
+                    <Icon class="text-3xl" :name="service.icon"/>
                 </div>
-                <span class="font-medium">Разработка бренда</span>
-                <span class="text-sm text-gray-400">Создание логотипа, фирменного стиля и брендбука для вашего бизнеса.</span>
-            </NuxtLink>
-            <NuxtLink to="/" class="flex flex-col gap-4 bg-[#252525] rounded-xl p-6 border border-white/10 shadow-[0px_0px_13px_-7px_white] transition-all duration-500 hover:shadow-none">
-                <div class="w-16 h-16 flex items-center justify-center p-2 bg-[#673ab7] rounded-full">
-                    <Icon class="text-3xl" name="material-symbols:brand-family"/>
-                </div>
-                <span class="font-medium">Разработка бренда</span>
-                <span class="text-sm text-gray-400">Создание логотипа, фирменного стиля и брендбука для вашего бизнеса.</span>
-            </NuxtLink>
-            <NuxtLink to="/" class="flex flex-col gap-4 bg-[#252525] rounded-xl p-6 border border-white/10 shadow-[0px_0px_13px_-7px_white] transition-all duration-500 hover:shadow-none">
-                <div class="w-16 h-16 flex items-center justify-center p-2 bg-[#673ab7] rounded-full">
-                    <Icon class="text-3xl" name="material-symbols:brand-family"/>
-                </div>
-                <span class="font-medium">Разработка бренда</span>
-                <span class="text-sm text-gray-400">Создание логотипа, фирменного стиля и брендбука для вашего бизнеса.</span>
-            </NuxtLink>
-            <NuxtLink to="/" class="flex flex-col gap-4 bg-[#252525] rounded-xl p-6 border border-white/10 shadow-[0px_0px_13px_-7px_white] transition-all duration-500 hover:shadow-none">
-                <div class="w-16 h-16 flex items-center justify-center p-2 bg-[#673ab7] rounded-full">
-                    <Icon class="text-3xl" name="material-symbols:brand-family"/>
-                </div>
-                <span class="font-medium">Разработка бренда</span>
-                <span class="text-sm text-gray-400">Создание логотипа, фирменного стиля и брендбука для вашего бизнеса.</span>
-            </NuxtLink>
-            <NuxtLink to="/" class="flex flex-col gap-4 bg-[#252525] rounded-xl p-6 border border-white/10 shadow-[0px_0px_13px_-7px_white] transition-all duration-500 hover:shadow-none">
-                <div class="w-16 h-16 flex items-center justify-center p-2 bg-[#673ab7] rounded-full">
-                    <Icon class="text-3xl" name="material-symbols:brand-family"/>
-                </div>
-                <span class="font-medium">Разработка бренда</span>
-                <span class="text-sm text-gray-400">Создание логотипа, фирменного стиля и брендбука для вашего бизнеса.</span>
-            </NuxtLink>
-            <NuxtLink to="/" class="flex flex-col gap-4 bg-[#252525] rounded-xl p-6 border border-white/10 shadow-[0px_0px_13px_-7px_white] transition-all duration-500 hover:shadow-none">
-                <div class="w-16 h-16 flex items-center justify-center p-2 bg-[#673ab7] rounded-full">
-                    <Icon class="text-3xl" name="material-symbols:brand-family"/>
-                </div>
-                <span class="font-medium">Разработка бренда</span>
-                <span class="text-sm text-gray-400">Создание логотипа, фирменного стиля и брендбука для вашего бизнеса.</span>
+                <span class="font-medium">{{ service.title }}</span>
+                <span class="text-sm text-gray-400">{{ service.shortDesc }}</span>
             </NuxtLink>
         </div>
     </div>
@@ -70,5 +35,11 @@
 </template>
 
 <script setup>
+    /* подключение БД и роутера */
+    const supabase = useSupabaseClient()
 
+    const { data, error } = await supabase
+    .from('services')
+    .select('*')   
+    .order('id', { ascending: true })
 </script>
