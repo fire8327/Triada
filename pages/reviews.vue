@@ -32,5 +32,9 @@
 </template>
 
 <script setup>
-
+  /* название и язык страницы */
+  useSeoMeta({
+        title: 'Отзывы',
+        lang: 'ru'
+	})
 </script>

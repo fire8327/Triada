@@ -35,6 +35,13 @@
 </template>
 
 <script setup>
+    /* название и язык страницы */
+    useSeoMeta({
+        title: 'Страница услуг',
+        lang: 'ru'
+	})
+
+
     /* подключение БД и роутера */
     const supabase = useSupabaseClient()
 

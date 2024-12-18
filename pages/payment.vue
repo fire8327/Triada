@@ -22,5 +22,9 @@
 </template>
 
 <script setup>
-
+    /* название и язык страницы */
+    useSeoMeta({
+        title: 'Страница оплаты',
+        lang: 'ru'
+	})
 </script>
