@@ -17,6 +17,20 @@
         </FormKit>
     </div>
     <div class="flex flex-col gap-6">
+        <p class="mainHeading">Мои заявки</p>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6" v-if="refBids">
+            <div class="flex flex-col gap-4 rounded-xl border border-white/10 bg-[#252525] shadow-[0px_0px_13px_-7px_white] p-4" v-for="bid in refBids">
+                <button v-if="showConfirmButton === bid.id" @click="cancelBid(bid.id); bid.status = 'Отменена'; showConfirmButton = false" class="self-end px-4 py-2 border border-red-500 bg-red-500 text-white rounded-full w-[160px] text-center transition-all duration-500 hover:text-red-500 hover:bg-transparent">Подтвердить</button>
+                <button v-else @click="showConfirmButton = bid.id" class="self-end" >
+                    <Icon class="text-3xl text-red-500" name="material-symbols:tab-close-inactive"/>
+                </button>
+                <p><span class="text-[#673ab7] font-semibold">ID:</span> {{ bid.id }}</p>
+                <p><span class="text-[#673ab7] font-semibold">Услуга:</span> {{ bid.services.title }}</p>
+                <p><span class="text-[#673ab7] font-semibold">Статус:</span> {{ bid.status }}</p>
+            </div>
+        </div>
+    </div>
+    <div class="flex flex-col gap-6">
         <p class="mainHeading">Выход из аккаунта</p>
         <button @click="logout" class="px-4 py-2 border border-[#673ab7] bg-[#673ab7] text-white rounded-full w-[160px] text-center transition-all duration-500 hover:text-[#673ab7] hover:bg-transparent">Выход</button>   
     </div>
@@ -69,6 +83,33 @@
             showMessage("Произошла ошибка!", false)   
         } else {            
             showMessage("Данные обновлены!", true)   
+        }
+    }
+
+
+    /* заявкм */
+    const { data:bids, error:bidsError } = await supabase
+    .from('bids')
+    .select('*, services(*)')   
+    .eq('userId', id.value)   
+    
+    const refBids = ref(bids)
+
+
+    /* отмена заявки */
+    const showConfirmButton = ref(null) //подтверждение
+
+    const cancelBid = async (bidId) => {
+        const { data, error } = await supabase
+        .from('bids')
+        .update({ status: 'Отменена' })
+        .eq('id', bidId)
+           
+        if(error) {
+            console.log(error)
+            showMessage("Произошла ошибка!", false)   
+        } else {            
+            showMessage("Заявка отменена!", true)   
         }
     }
 
