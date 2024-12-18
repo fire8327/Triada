@@ -20,7 +20,8 @@
         <div class="flex flex-col gap-2 text-gray-400 text-lg">
             <p>{{ data[0].fullDesc }}</p>
         </div>
-        <button class="px-4 py-2 border border-[#673ab7] text-[#673ab7] rounded-full w-fit text-center transition-all duration-500 hover:text-white hover:bg-[#673ab7] self-end">Оставить заявку</button>
+        <button v-if="authenticated" class="px-4 py-2 border border-[#673ab7] text-[#673ab7] rounded-full w-fit text-center transition-all duration-500 hover:text-white hover:bg-[#673ab7] self-end">Оставить заявку</button>
+        <p v-else class="text-lg text-gray-400 self-end">*Для оформления заявки войдти в аккаунт</p>
     </div>
 
 </template>
