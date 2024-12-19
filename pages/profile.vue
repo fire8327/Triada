@@ -21,7 +21,7 @@
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             <div class="flex flex-col gap-4 rounded-xl border border-white/10 bg-[#252525] shadow-[0px_0px_13px_-7px_white] p-4" v-for="bid in refBids">
                 <div v-if="showConfirmButton === bid.id" class="flex items-center gap-2 text-lg self-end">
-                    <button @click="cancelBid(bid.id); bid.status = 'Отменена'; showConfirmButton = false" class="px-4 py-1.5 border border-red-500 bg-red-500 text-white rounded-full w-fit text-center transition-all duration-500 hover:text-red-500 hover:bg-transparent">Подтвердить</button>
+                    <button @click="cancelBid(bid.id); bid.status = 'Отменена'; showConfirmButton = false" class="px-4 py-1.5 border border-[#673ab7] bg-[#673ab7] text-white rounded-full w-fit text-center transition-all duration-500 hover:text-[#673ab7] hover:bg-transparent">Подтвердить</button>
                     <button @click="showConfirmButton = null" class="px-4 py-1.5 border border-white bg-white text-[#252525] rounded-full w-fit text-center transition-all duration-500 hover:text-white hover:bg-transparent">Отмена</button>
                 </div>
                 <button v-else-if="bid.status == 'Новая'" @click="showConfirmButton = bid.id" class="self-end" >
@@ -90,7 +90,7 @@
     }
 
 
-    /* заявкм */
+    /* заявки */
     const { data:bids, error:bidsError } = await supabase
     .from('bids')
     .select('*, services(*)')   
