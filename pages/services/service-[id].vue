@@ -47,26 +47,42 @@
     .eq('id', route.params.id)
 
 
-    /* проверка входа */
+    /* проверка входа и определение пользователя */
     const { authenticated, id } = storeToRefs(useUserStore())
+    const { data: users } = await supabase
+    .from('users')
+    .select('*')
+    .eq('id',id.value)
 
 
     /* создание сообщений */
     const { showMessage } = useMessagesStore()
 
 
+    /* функция фидбека */
+    const { submitFeedback } = useFeedbackStore()
+
+
     /* создание функции на отправку */
     const createBid = async () => {
-        const { data, error } = await supabase
+        let msg = `<b>Новая заявка!</b>\n`
+        + `<b>Услуга:</b> ${data[0].title}\n`
+        + `<b>Фамилия:</b> ${users[0].surname}\n`
+        + `<b>Имя:</b> ${users[0].name}\n`
+        + `<b>Отчество:</b> ${users[0].patronymic}\n`
+        + `<b>Телефон:</b> ${users[0].phone}\n`
+        + `<b>Почта:</b> ${users[0].email}\n`    
+
+        const { data:insertBids, error } = await supabase
         .from('bids')
         .insert([
             { userId: id.value, serviceId: route.params.id }
         ])
         .select()
 
-        if (data) {
-            console.log(data)
-            showMessage('Завка отправлена!', true)
+        if (insertBids) {
+            console.log(insertBids)
+            await submitFeedback(msg)
         } else {      
             showMessage('Произошла ошибка!', false)
         }
