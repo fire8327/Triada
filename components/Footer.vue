@@ -13,6 +13,10 @@
                         <p>Москва, ул Пушкина, д. 1 <br> пн—сб с 10:00 — 20:00</p>
                     </div>
                     <div class="flex flex-col gap-4 text-lg">
+                        <p class="text-[#673ab7] font-Cormorant font-semibold">Помощь</p>
+                        <NuxtLink to="/feedback" class="transition-all duration-500 hover:text-gray-400">Оставить заявку</NuxtLink>   
+                    </div>
+                    <div class="flex flex-col gap-4 text-lg">
                         <p class="text-[#673ab7] font-Cormorant font-semibold">Контакты</p>   
                         <div class="flex items-center gap-4">
                             <NuxtLink to="https://vk.com/" target="_blank" class="transition-all duration-500 hover:text-[#673ab7]">
