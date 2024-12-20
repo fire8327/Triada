@@ -1,4 +1,5 @@
 <template>
+    <!-- Описание компании -->
     <div class="flex flex-col gap-6">
         <p class="mainHeading">О компании</p>
         <div class="flex max-lg:flex-col gap-6">
@@ -11,6 +12,7 @@
         </div>
     </div>
     <div class="flex gap-6 max-lg:flex-col">
+        <!-- Контакты компании -->
         <div class="lg:w-1/3 flex flex-col gap-4">
             <p class="mainHeading">Контакты</p>
             <div class="flex flex-col gap-2">
@@ -30,6 +32,8 @@
                 <p class="text-sm text-gray-400">Телефон для связи</p>
                 <NuxtLink to="tel:8 800-555-35-35" class="font-Cormorant font-semibold transition-all duration-500 hover:text-[#673ab7]">8 800-555-35-35</NuxtLink>
             </div>
+
+            <!-- Социальные сети -->
             <div class="flex items-center gap-2">
                 <NuxtLink to="https://vk.com/" target="_blank" class="transition-all duration-500 hover:text-[#673ab7]">
                     <Icon class="text-3xl" name="mdi:vk"/>
@@ -42,6 +46,8 @@
                 </NuxtLink>
             </div>
         </div>
+
+        <!-- Карта -->
         <iframe class="w-full h-[400px] lg:w-2/3 lg:h-full rounded-xl border border-gray-200" src="https://yandex.ru/map-widget/v1/?um=constructor%3Aca9938ebdc9acd66703b7f498d6b34e78c9910b76fcde25026bdbe728a855ad7&amp;source=constructor" frameborder="0"></iframe>
     </div>
 </template>

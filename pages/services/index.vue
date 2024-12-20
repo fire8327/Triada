@@ -1,4 +1,5 @@
 <template>
+    <!-- Список всех услуг -->
     <div class="flex flex-col gap-6">
         <p class="mainHeading">Наши услуги</p>
         <p class="text-gray-400 text-lg">
@@ -14,6 +15,8 @@
             </NuxtLink>
         </div>
     </div>
+
+    <!-- Шаги исполнения услуги -->
     <div class="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 rounded-xl bg-[#252525] p-6 border border-white/10 shadow-[0px_0px_13px_-7px_white]">
         <div class="text-center">
             <h3 class="font-medium mb-2">Шаг 1</h3>

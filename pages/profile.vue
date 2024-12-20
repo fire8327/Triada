@@ -1,4 +1,5 @@
 <template>
+    <!-- Форма изменения личных данных -->
     <div class="flex flex-col gap-6">
         <p class="mainHeading">Личные данные</p>
         <FormKit @submit="updateUser" type="form" :actions="false" messages-class="hidden" form-class="flex flex-col gap-6 items-center justify-center">
@@ -16,6 +17,8 @@
             <button type="submit" class="px-4 py-2 border border-[#673ab7] bg-[#673ab7] text-white rounded-full w-[160px] text-center transition-all duration-500 hover:text-[#673ab7] hover:bg-transparent">Обновить</button>
         </FormKit>
     </div>
+
+    <!-- Список заявок -->
     <div class="flex flex-col gap-6" v-if="refBids && role == 'user'">
         <p class="mainHeading">Мои заявки</p>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
@@ -33,6 +36,8 @@
             </div>
         </div>
     </div>
+
+    <!-- Выход из аккаунта -->
     <div class="flex flex-col gap-6">
         <p class="mainHeading">Выход из аккаунта</p>
         <button @click="logout" class="px-4 py-2 border border-[#673ab7] bg-[#673ab7] text-white rounded-full w-[160px] text-center transition-all duration-500 hover:text-[#673ab7] hover:bg-transparent">Выход</button>   

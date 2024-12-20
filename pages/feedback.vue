@@ -1,4 +1,5 @@
 <template>
+    <!-- Форма обратной связи -->
     <FormKit @submit="sendFeedback" type="form" :actions="false" messages-class="hidden" form-class="flex flex-col gap-6 items-center justify-center">
         <p class="text-3xl font-Cormorant uppercase tracking-widest font-semibold">Завка на обратную связь</p>
         <FormKit v-model="feedbackForm.name" validation="required" messages-class="text-[#E9556D] font-Cormorant" type="text" placeholder="Имя" name="Имя" outer-class="w-full md:w-2/3 lg:w-1/2" input-class="focus:outline-none px-4 py-2 bg-transparent rounded-xl border border-white/15 w-full transition-all duration-500 focus:border-white focus:bg-[#191919]"/>

@@ -1,4 +1,5 @@
 <template>
+    <!-- Форма регистрация -->
     <FormKit @submit="regUser" type="form" :actions="false" messages-class="hidden" form-class="flex flex-col gap-6 items-center justify-center">
         <p class="text-3xl font-Cormorant uppercase tracking-widest font-semibold">Регистрация</p>
         <div class="flex items-center lg:items-start gap-4 max-lg:flex-col md:w-2/3 lg:w-1/2">

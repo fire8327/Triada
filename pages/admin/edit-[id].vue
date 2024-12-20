@@ -1,6 +1,7 @@
 <template>
+    <!-- Форма редактирование товара -->
     <FormKit @submit="updateServices" type="form" :actions="false" messages-class="hidden" form-class="flex flex-col gap-6 items-center justify-center">
-        <p class="text-3xl font-Cormorant uppercase tracking-widest font-semibold">Завка на обратную связь</p>
+        <p class="text-3xl font-Cormorant uppercase tracking-widest font-semibold">Редактирование товара</p>
         <FormKit v-model="services.title" validation="required" messages-class="text-[#E9556D] font-Cormorant" type="text" placeholder="Наименование услуги" name="Наименование услуги" outer-class="w-full md:w-2/3 lg:w-1/2" input-class="focus:outline-none px-4 py-2 bg-transparent rounded-xl border border-white/15 w-full transition-all duration-500 focus:border-white focus:bg-[#191919]"/>
         <FormKit v-model="services.icon" validation="required" messages-class="text-[#E9556D] font-Cormorant" type="text" placeholder="Иконка" name="Иконка" outer-class="w-full md:w-2/3 lg:w-1/2" input-class="focus:outline-none px-4 py-2 bg-transparent rounded-xl border border-white/15 w-full transition-all duration-500 focus:border-white focus:bg-[#191919]"/>
         <FormKit v-model="services.shortDesc" validation="required" messages-class="text-[#E9556D] font-Cormorant" type="textarea" placeholder="Краткое описание" name="Краткое описание" outer-class="w-full md:w-2/3 lg:w-1/2" input-class="focus:outline-none px-4 py-2 bg-transparent rounded-xl border border-white/15 w-full transition-all duration-500 focus:border-white focus:bg-[#191919]"/>

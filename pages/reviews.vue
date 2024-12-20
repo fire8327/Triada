@@ -23,6 +23,7 @@
         </p>
       </SwiperSlide>
     </Swiper> -->
+    <!-- Форма добавления отзыва (если пользователь вошёл в аккаунт) -->
     <FormKit @submit="addReview" v-if="authenticated" type="form" :actions="false" messages-class="hidden" form-class="flex flex-col gap-6">
         <FormKit v-model="reviewForm.id" validation="required" messages-class="text-[#E9556D] font-Cormorant" type="select" :options="serviceOptions" placeholder="Выберите услугу" name="Услуга" outer-class="w-full" input-class="focus:outline-none px-4 py-2 bg-transparent rounded-xl border border-white/15 w-full transition-all duration-500 focus:border-white focus:bg-[#191919]"/>
         <FormKit v-model="reviewForm.text" validation="required" messages-class="text-[#E9556D] font-Cormorant" type="textarea" placeholder="Текст отзыва" name="Текст отзыва" outer-class="w-full" input-class="focus:outline-none px-4 py-2 bg-transparent rounded-xl border border-white/15 w-full transition-all duration-500 focus:border-white focus:bg-[#191919]"/>

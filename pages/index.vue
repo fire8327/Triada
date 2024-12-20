@@ -1,4 +1,5 @@
 <template>
+    <!-- Почему стоит выбрать именно нас? -->
     <div class="flex flex-col gap-6">
         <p class="mainHeading">Почему вам стоит выбрать именно нас?</p>
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
@@ -25,6 +26,8 @@
             </div>
         </div>
     </div>
+
+    <!-- Краткое описание компании -->
     <div class="flex flex-col gap-6">
         <p class="mainHeading">О компании</p>
         <div class="flex max-lg:flex-col gap-6">
@@ -45,8 +48,12 @@
                 </ul>
             </div>
         </div>
+
+        <!-- Ссылка на страницу о нас -->
         <NuxtLink to="/about" class="px-4 py-2 border border-[#673ab7] text-[#673ab7] rounded-full w-[160px] text-center transition-all duration-500 hover:text-white hover:bg-[#673ab7] self-end">Подробнее</NuxtLink>
     </div>
+
+    <!-- Несколько услуг из всего списка -->
     <div class="flex flex-col gap-6">
         <p class="mainHeading">Наши услуги</p>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -72,8 +79,11 @@
                 <span class="text-sm text-gray-400">Создание логотипа, фирменного стиля и брендбука для вашего бизнеса.</span>
             </NuxtLink>
         </div>
+        <!-- Ссылка на страницу услуг -->
         <NuxtLink to="/services" class="px-4 py-2 border border-[#673ab7] text-[#673ab7] rounded-full w-[160px] text-center transition-all duration-500 hover:text-white hover:bg-[#673ab7] self-end">Подробнее</NuxtLink>
     </div>
+
+    <!-- Кликабельные карточки партнёров -->
     <div class="flex flex-col gap-6">
         <p class="mainHeading">Наши партнёры</p>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -103,6 +113,8 @@
             </NuxtLink>
         </div>
     </div>
+
+    <!-- Список уже готовых работ -->
     <div class="flex flex-col gap-6">
         <p class="mainHeading">Портфолио</p>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

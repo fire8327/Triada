@@ -1,10 +1,12 @@
 <template>
+    <!-- Наименование услуги -->
     <div class="flex flex-col gap-6 items-center text-center">
         <NuxtLink to="/services" class="self-start px-4 py-2 rounded-xl border border-white/10 shadow-[0px_0px_13px_-7px_white] bg-[#191919]">Вернуться назад</NuxtLink>
         <p class="mainHeading">Услуга: {{ data[0].title }}</p>
         <p class="text-lg text-gray-400 max-w-2xl">{{ data[0].shortDesc }}</p>
     </div>
     
+    <!-- Преимущества -->
     <div class="w-full py-16 px-6 bg-[#191919] rounded-xl border border-white/10 flex flex-col gap-6">
         <p class="mainHeading text-center">Преимущества</p>
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
@@ -15,11 +17,14 @@
         </div>
     </div>
 
+    <!-- Подробности услуги -->
     <div class="flex flex-col gap-6">
         <p class="mainHeading text-center text-[#673ab7]">Подробности услуги</p>
         <div class="flex flex-col gap-2 text-gray-400 text-lg">
             <p>{{ data[0].fullDesc }}</p>
         </div>
+        
+        <!-- Проверка входа -->
         <div class="flex items-center gap-2 self-end" v-if="authenticated && role == 'user'">
             <button @click="startTimer" :disabled="isTimerActive" :class="{'text-white bg-[#673ab7]' : isTimerActive}" class="px-4 py-2 border border-[#673ab7] text-[#673ab7] rounded-full w-fit text-center transition-all duration-500 hover:text-white hover:bg-[#673ab7]">{{ timer > 0 ? `Заявка отправится через ${timer} секунд` : "Отправить заявку" }}</button>
             <button v-if="isTimerActive" @click="cancelTimer" class="px-4 py-2 border border-red-500 text-red-500 rounded-full w-fit text-center transition-all duration-500 hover:text-white hover:bg-red-500">Отмена</button>
