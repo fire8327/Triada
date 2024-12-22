@@ -4,7 +4,7 @@
         <NuxtLink to="/services" class="self-start px-4 py-2 rounded-xl border border-white/10 shadow-[0px_0px_13px_-7px_white] bg-[#191919]">Вернуться назад</NuxtLink>
         <p class="mainHeading">Услуга: {{ data[0].title }}</p>
         <p class="text-lg text-gray-400 max-w-2xl">{{ data[0].shortDesc }}</p>
-        <img src="/public/images/portfolio/1.jpg" alt="" class="rounded-xl aspect-video object-cover w-full lg:w-2/3">
+        <img :src="`https://ovlfsydfwucmkdxpwngo.supabase.co/storage/v1/object/public/images/servicesMain/${data[0].servicesMain}`" alt="" class="rounded-xl aspect-video object-cover w-full lg:w-2/3">
     </div>
     
     <!-- Преимущества -->
@@ -40,7 +40,7 @@
         <!-- Призыв к действию -->
         <p class="mainHeading text-[#673ab7]">Ваши желания осуществимы</p>
         <p class="text-gray-400 text-lg">Наши специалисты воплотили в жизнь уже сотни проектов. <br> Обратись к нам!</p>
-        <img src="/public/images/portfolio/1.jpg" alt="" class="rounded-xl aspect-video object-cover w-full lg:w-2/3">
+        <img :src="`https://ovlfsydfwucmkdxpwngo.supabase.co/storage/v1/object/public/images/servicesAction/${data[0].servicesAction}`" alt="" class="rounded-xl aspect-video object-cover w-full lg:w-2/3">
 
         <!-- Проверка входа -->
         <div class="flex items-center gap-2 self-end" v-if="authenticated && role == 'user'">
