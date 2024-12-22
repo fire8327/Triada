@@ -1,7 +1,7 @@
 <template>
   <!-- Слайдер -->
     <ClientOnly>
-      <swiper-container ref="containerRef" class="w-full" :loop="true" :autoplay="{ delay: 2500 }">
+      <swiper-container ref="containerRef" class="w-full" :loop="true" :autoplay="{ delay: 2500 }" v-if="reviews">
         <swiper-slide class="flex flex-col gap-4 p-4 rounded-xl border border-white/10 bg-[#252525] w-full" v-for="review in reviews">
           <p class="text-[#673ab7] font-semibold">{{ review.users.surname }} {{ review.users.name }}</p>
           <p class="font-Cormorant">Услуга: {{ review.services.title }}</p>

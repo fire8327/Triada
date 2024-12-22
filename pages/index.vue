@@ -50,7 +50,7 @@
         </div>
 
         <!-- Ссылка на страницу о нас -->
-        <NuxtLink to="/about" class="px-4 py-2 border border-[#673ab7] text-[#673ab7] rounded-full w-[160px] text-center transition-all duration-500 hover:text-white hover:bg-[#673ab7] self-end">Подробнее</NuxtLink>
+        <NuxtLink to="/about" class="px-4 py-2 border border-[#673ab7] hover:text-[#673ab7] hover:bg-transparent rounded-full w-[160px] text-center transition-all duration-500 text-white bg-[#673ab7] self-end">Подробнее</NuxtLink>
     </div>
 
     <!-- Несколько услуг из всего списка -->
@@ -66,7 +66,7 @@
             </NuxtLink>
         </div>
         <!-- Ссылка на страницу услуг -->
-        <NuxtLink to="/services" class="px-4 py-2 border border-[#673ab7] text-[#673ab7] rounded-full w-[160px] text-center transition-all duration-500 hover:text-white hover:bg-[#673ab7] self-end">Подробнее</NuxtLink>
+        <NuxtLink to="/services" class="px-4 py-2 border border-[#673ab7] hover:text-[#673ab7] hover:bg-transparent rounded-full w-[160px] text-center transition-all duration-500 text-white bg-[#673ab7] self-end">Подробнее</NuxtLink>
     </div>
 
     <!-- Кликабельные карточки партнёров -->

@@ -1,7 +1,7 @@
 <template>
-    <!-- Редактирование заявок -->
+    <!-- Редактирование услуг -->
     <div class="flex flex-col gap-6">
-        <p class="mainHeading">Редактирование заявок</p>
+        <p class="mainHeading">Редактирование услуг</p>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             <div v-for="service in services"
                 class="flex flex-col gap-4 bg-[#252525] rounded-xl p-6 border border-white/10 shadow-[0px_0px_13px_-7px_white] transition-all duration-500 hover:shadow-none">
