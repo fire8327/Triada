@@ -3,7 +3,7 @@
     <ClientOnly>
       <swiper-container ref="containerIndexRef" class="w-full" :loop="true" :autoplay="{ delay: 2500 }">
         <swiper-slide class="relative !h-fit rounded-xl overflow-hidden border border-white/10">
-            <img src="/images/portfolio/1.jpg" alt="" class="object-cover aspect-video max-md:aspect-[9/16]">
+            <img src="/images/slider/1.jpg" alt="" class="object-cover aspect-video max-md:aspect-[9/16]">
             <div class="absolute inset-0 bg-black/40"></div>
             <div class="absolute inset-0 py-10 px-4 flex justify-center items-center text-white">
                 <div class="flex flex-col relative gap-6 w-full md:w-2/3 lg:w-1/3 p-4 lg:p-6 rounded-2xl overflow-hidden">
@@ -15,7 +15,7 @@
             </div>
         </swiper-slide>
         <swiper-slide class="relative !h-fit rounded-xl overflow-hidden border border-white/10">
-            <img src="/images/portfolio/2.jpg" alt="" class="object-cover aspect-video max-md:aspect-[9/16]">
+            <img src="/images/slider/2.jpg" alt="" class="object-cover aspect-video max-md:aspect-[9/16]">
             <div class="absolute inset-0 bg-black/40"></div>
             <div class="absolute inset-0 py-10 px-4 flex justify-center items-center text-white">
                 <div class="flex flex-col relative gap-6 w-full md:w-2/3 lg:w-1/3 p-4 lg:p-6 rounded-2xl overflow-hidden">
@@ -27,7 +27,7 @@
             </div>
         </swiper-slide>
         <swiper-slide class="relative !h-fit rounded-xl overflow-hidden border border-white/10">
-            <img src="/images/portfolio/3.jpg" alt="" class="object-cover aspect-video max-md:aspect-[9/16]">
+            <img src="/images/slider/3.jpg" alt="" class="object-cover aspect-video max-md:aspect-[9/16]">
             <div class="absolute inset-0 bg-black/40"></div>
             <div class="absolute inset-0 py-10 px-4 flex justify-center items-center text-white">
                 <div class="flex flex-col relative gap-6 w-full md:w-2/3 lg:w-1/3 p-4 lg:p-6 rounded-2xl overflow-hidden">
@@ -39,7 +39,7 @@
             </div>
         </swiper-slide>
         <swiper-slide class="relative !h-fit rounded-xl overflow-hidden border border-white/10">
-            <img src="/images/portfolio/4.jpg" alt="" class="object-cover aspect-video max-md:aspect-[9/16]">
+            <img src="/images/slider/4.jpg" alt="" class="object-cover aspect-video max-md:aspect-[9/16]">
             <div class="absolute inset-0 bg-black/40"></div>
             <div class="absolute inset-0 py-10 px-4 flex justify-center items-center text-white">
                 <div class="flex flex-col relative gap-6 w-full md:w-2/3 lg:w-1/3 p-4 lg:p-6 rounded-2xl overflow-hidden">
