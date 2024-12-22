@@ -43,7 +43,7 @@
     --purple: rgb(123, 31, 162);
     --violet: rgb(103, 58, 183);
     --pink: rgb(244, 143, 177);
-    }
+}
 
 @keyframes background-pan {
     from {
@@ -67,4 +67,8 @@
     background-size: 200%;
     -webkit-text-fill-color: transparent;
     white-space: nowrap;
+}
+
+.index-swiper-pagination .swiper-pagination-bullet-active {
+    background-color: #673ab7 !important;
 }

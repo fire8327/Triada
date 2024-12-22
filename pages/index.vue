@@ -1,4 +1,58 @@
 <template>
+    <!-- Слайдер -->
+    <ClientOnly>
+      <swiper-container ref="containerIndexRef" class="w-full" :loop="true" :autoplay="{ delay: 2500 }">
+        <swiper-slide class="relative !h-fit rounded-xl overflow-hidden border border-white/10">
+            <img src="/images/portfolio/1.jpg" alt="" class="object-cover aspect-video max-md:aspect-[9/16]">
+            <div class="absolute inset-0 bg-black/40"></div>
+            <div class="absolute inset-0 py-10 px-4 flex justify-center items-center text-white">
+                <div class="flex flex-col relative gap-6 w-full md:w-2/3 lg:w-1/3 p-4 lg:p-6 rounded-2xl overflow-hidden">
+                    <div class="absolute inset-0 backdrop-blur-md"></div>
+                    <p class="text-2xl font-Cormorant z-[1]">Создание продуктов под клиента</p>
+                    <p class="opacity-80 text-lg z-[1]">Индивидуальный подход для создания решений, которые соответствуют вашим ожиданиям.</p>
+                    <NuxtLink to="/services" class="z-[1] px-4 py-2 rounded-xl mx-auto border border-[#673ab7] bg-[#673ab7] hover:bg-transparent transition-all duration-500">Перейти к услугам</NuxtLink>
+                </div>
+            </div>
+        </swiper-slide>
+        <swiper-slide class="relative !h-fit rounded-xl overflow-hidden border border-white/10">
+            <img src="/images/portfolio/2.jpg" alt="" class="object-cover aspect-video max-md:aspect-[9/16]">
+            <div class="absolute inset-0 bg-black/40"></div>
+            <div class="absolute inset-0 py-10 px-4 flex justify-center items-center text-white">
+                <div class="flex flex-col relative gap-6 w-full md:w-2/3 lg:w-1/3 p-4 lg:p-6 rounded-2xl overflow-hidden">
+                    <div class="absolute inset-0 backdrop-blur-md"></div>
+                    <p class="text-2xl font-Cormorant z-[1]">Выбор способа продвижения</p>
+                    <p class="opacity-80 text-lg z-[1]">Предоставляем возможность выбрать подходящий вариант продвижения для вашего продукта.</p>
+                    <NuxtLink to="/services" class="z-[1] px-4 py-2 rounded-xl mx-auto border border-[#673ab7] bg-[#673ab7] hover:bg-transparent transition-all duration-500">Перейти к услугам</NuxtLink>
+                </div>
+            </div>
+        </swiper-slide>
+        <swiper-slide class="relative !h-fit rounded-xl overflow-hidden border border-white/10">
+            <img src="/images/portfolio/3.jpg" alt="" class="object-cover aspect-video max-md:aspect-[9/16]">
+            <div class="absolute inset-0 bg-black/40"></div>
+            <div class="absolute inset-0 py-10 px-4 flex justify-center items-center text-white">
+                <div class="flex flex-col relative gap-6 w-full md:w-2/3 lg:w-1/3 p-4 lg:p-6 rounded-2xl overflow-hidden">
+                    <div class="absolute inset-0 backdrop-blur-md"></div>
+                    <p class="text-2xl font-Cormorant z-[1]">Эффективное сотрудничество</p>
+                    <p class="opacity-80 text-lg z-[1]">Слаженная работа нашей команды для быстрого и качественного решения вашей задачи.</p>
+                    <NuxtLink to="/services" class="z-[1] px-4 py-2 rounded-xl mx-auto border border-[#673ab7] bg-[#673ab7] hover:bg-transparent transition-all duration-500">Перейти к услугам</NuxtLink>
+                </div>
+            </div>
+        </swiper-slide>
+        <swiper-slide class="relative !h-fit rounded-xl overflow-hidden border border-white/10">
+            <img src="/images/portfolio/4.jpg" alt="" class="object-cover aspect-video max-md:aspect-[9/16]">
+            <div class="absolute inset-0 bg-black/40"></div>
+            <div class="absolute inset-0 py-10 px-4 flex justify-center items-center text-white">
+                <div class="flex flex-col relative gap-6 w-full md:w-2/3 lg:w-1/3 p-4 lg:p-6 rounded-2xl overflow-hidden">
+                    <div class="absolute inset-0 backdrop-blur-md"></div>
+                    <p class="text-2xl font-Cormorant z-[1]">Усердие специалистов</p>
+                    <p class="opacity-80 text-lg z-[1]">Глубокая проработка задачи для достижения желаемого результата.</p>
+                    <NuxtLink to="/services" class="z-[1] px-4 py-2 rounded-xl mx-auto border border-[#673ab7] bg-[#673ab7] hover:bg-transparent transition-all duration-500">Перейти к услугам</NuxtLink>
+                </div>
+            </div>
+        </swiper-slide>
+      </swiper-container>
+    </ClientOnly>
+
     <!-- Почему стоит выбрать именно нас? -->
     <div class="flex flex-col gap-6">
         <p class="mainHeading">Почему вам стоит выбрать именно нас?</p>
@@ -147,4 +201,17 @@
     .from('services')
     .select('*')   
     .order('id', { ascending: false })
+
+
+    /* слайдер */
+    const containerIndexRef = ref(null)
+    const swiperIndex = useSwiper(containerIndexRef, {
+        loop: true,
+        spaceBetween: 20,
+        slidesPerView: 1
+    })
+
+    onMounted(() => {
+        console.log(swiperIndex.instance)
+    })
 </script>
