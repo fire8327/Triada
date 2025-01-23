@@ -48,6 +48,21 @@
             </div>
         </div>
     </div>
+
+    <!-- Отзывы -->
+    <div class="flex flex-col gap-6">
+        <p class="mainHeading">Отзывы</p>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            <div class="flex flex-col gap-4 rounded-xl border border-white/10 bg-[#252525] shadow-[0px_0px_13px_-7px_white] p-4" v-for="review in refReviews" :key="review.id">
+                <button class="self-end" @click="deleteReviews(review.id)">
+                    <Icon class="text-3xl text-red-500" name="material-symbols:tab-close-inactive"/>
+                </button>
+                <p><span class="text-[#673ab7] font-semibold">Пользователь:</span> {{ review.users.surname }} {{ review.users.name }} {{ review.users.patronymic }}</p>
+                <p><span class="text-[#673ab7] font-semibold">Услуга:</span> {{ review.services.title }}</p>
+                <p><span class="text-[#673ab7] font-semibold">Текст:</span> {{ review.text }}</p>
+            </div>
+        </div>
+    </div>
 </template>
 
 <script setup>
@@ -100,6 +115,34 @@
                 refBids.value[bidIndex].status = status
             }
             showMessage(`Заявка ${status.toLowerCase()}!`, true)
+        }
+    }
+
+
+    /* отзывы */
+    const { data:reviews, error:reviewsError } = await supabase
+    .from('reviews')
+    .select('*, services(*), users(*)')   
+    .order('id', { ascending: true })
+    
+    const refReviews = ref(reviews)
+
+    const deleteReviews = async (reviewId) => {        
+        const { error } = await supabase
+        .from('reviews')
+        .delete()
+        .eq('id', reviewId)
+          
+        if (error) {
+            console.error(error)
+            showMessage("Произошла ошибка!", false)
+        } else {
+            // Удаляем запись из массива refReviews
+            const reviewIndex = refReviews.value.findIndex((review) => review.id === reviewId);
+            if (reviewIndex !== -1) {
+                refReviews.value.splice(reviewIndex, 1);
+            }
+            showMessage("Отзыв удалён", true)
         }
     }
 </script>
