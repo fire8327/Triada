@@ -53,7 +53,10 @@
 
 
     /* регистрация пользователя */
+    const { encrypt } = useCryptStore()
     const regUser = async () => {
+        user.value.password = await encrypt(user.value.password)
+
         const { data: users, error: usersError } = await supabase
         .from('users')
         .select("*")

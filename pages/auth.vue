@@ -42,6 +42,7 @@
 
 
     /* вход */
+    const { decrypt } = useCryptStore()
     const authUser = async() => {  
         const { data: users, error } = await supabase
         .from('users')
@@ -52,6 +53,8 @@
             user.value.login = ""
             return showMessage("Неверно введен логин!", false)              
         }
+
+        users[0].password = await decrypt(users[0].password)
 
         if (user.value.password !== users[0].password) {
             user.value.password = ""

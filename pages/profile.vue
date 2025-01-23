@@ -10,7 +10,7 @@
             </div>
             <div class="flex items-center lg:items-start gap-4 max-lg:flex-col md:w-2/3 lg:w-1/2">
                 <FormKit v-model="user.login" validation="required" messages-class="text-[#E9556D] font-Cormorant" type="text" placeholder="Логин" name="Логин" outer-class="w-full lg:w-1/2" input-class="focus:outline-none px-4 py-2 bg-transparent rounded-xl border border-white/15 w-full transition-all duration-500 focus:border-white focus:bg-[#191919]"/>
-                <FormKit v-model="user.password" validation="required|length:6" messages-class="text-[#E9556D] font-Cormorant" type="password" placeholder="······" name="Пароль" outer-class="w-full lg:w-1/2" input-class="focus:outline-none px-4 py-2 bg-transparent rounded-xl border border-white/15 w-full transition-all duration-500 focus:border-white focus:bg-[#191919]"/>
+                <FormKit v-model="user.password" validation="required|length:6" messages-class="text-[#E9556D] font-Cormorant" type="text" placeholder="······" name="Пароль" outer-class="w-full lg:w-1/2" input-class="focus:outline-none px-4 py-2 bg-transparent rounded-xl border border-white/15 w-full transition-all duration-500 focus:border-white focus:bg-[#191919]"/>
             </div>
             <FormKit v-model="user.phone" validation="required" messages-class="text-[#E9556D] font-Cormorant" type="text" placeholder="Телефон" name="Телефон" outer-class="w-full md:w-2/3 lg:w-1/2" input-class="focus:outline-none px-4 py-2 bg-transparent rounded-xl border border-white/15 w-full transition-all duration-500 focus:border-white focus:bg-[#191919]"/>
             <FormKit v-model="user.email" validation="required|email" messages-class="text-[#E9556D] font-Cormorant" type="text" placeholder="Email" name="Email" outer-class="w-full md:w-2/3 lg:w-1/2" input-class="focus:outline-none px-4 py-2 bg-transparent rounded-xl border border-white/15 w-full transition-all duration-500 focus:border-white focus:bg-[#191919]"/>
@@ -78,9 +78,15 @@
         password: users[0].password
     }) 
 
+    /* шифровка и дешифровка пароля */
+    const { encrypt, decrypt } = useCryptStore()
+    user.value.password = await decrypt(user.value.password)
+
 
     /* обновление данных */
     const updateUser = async () => {    
+        user.value.password = await encrypt(user.value.password)
+        
         const { data, error } = await supabase
         .from('users')
         .update(user.value)
@@ -92,6 +98,8 @@
         } else {            
             showMessage("Данные обновлены!", true)   
         }
+
+        user.value.password = await decrypt(user.value.password)
     }
 
 
