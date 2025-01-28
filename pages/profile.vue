@@ -31,6 +31,8 @@
                     <Icon class="text-3xl text-red-500" name="material-symbols:tab-close-inactive"/>
                 </button>
                 <p class="mt-auto"><span class="text-[#673ab7] font-semibold">ID:</span> {{ bid.id }}</p>
+                <p><span class="text-[#673ab7] font-semibold">Email:</span> {{ bid.users.email }}</p>
+                <p><span class="text-[#673ab7] font-semibold">Телефон:</span> {{ bid.users.phone }}</p>
                 <p><span class="text-[#673ab7] font-semibold">Услуга:</span> {{ bid.services.title }}</p>
                 <p><span class="text-[#673ab7] font-semibold">Статус:</span> {{ bid.status }}</p>
             </div>
@@ -106,7 +108,7 @@
     /* заявки */
     const { data:bids, error:bidsError } = await supabase
     .from('bids')
-    .select('*, services(*)')   
+    .select('*, services(*), users(*)')   
     .eq('userId', id.value)   
     .order('id', { ascending: true })
     
