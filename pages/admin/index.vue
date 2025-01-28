@@ -42,6 +42,8 @@
                 <div class="flex flex-col gap-2 mt-auto">
                     <p><span class="text-[#673ab7] font-semibold">ID:</span> {{ bid.id }}</p>
                     <p><span class="text-[#673ab7] font-semibold">Пользователь:</span> {{ bid.users.surname }} {{ bid.users.name }} {{ bid.users.patronymic }}</p>
+                    <p><span class="text-[#673ab7] font-semibold">Email:</span> {{ bid.users.email }}</p>
+                    <p><span class="text-[#673ab7] font-semibold">Телефон:</span> {{ bid.users.phone }}</p>
                     <p><span class="text-[#673ab7] font-semibold">Услуга:</span> {{ bid.services.title }}</p>
                     <p><span class="text-[#673ab7] font-semibold">Статус:</span> {{ bid.status }}</p>
                 </div>
