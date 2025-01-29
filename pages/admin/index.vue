@@ -1,4 +1,38 @@
 <template>
+    <!-- Добавление новой услуги -->
+    <FormKit @submit="addService" type="form" :actions="false" messages-class="hidden" form-class="flex flex-col gap-6 items-center justify-center">
+        <p class="mainHeading w-full">Добавление новой услуги</p>
+        <FormKit v-model="servicesForm.title" validation="required" messages-class="text-[#E9556D] font-Cormorant" type="text" placeholder="Наименование услуги" name="Наименование услуги" outer-class="w-full md:w-2/3 lg:w-1/2" input-class="focus:outline-none px-4 py-2 bg-transparent rounded-xl border border-white/15 w-full transition-all duration-500 focus:border-white focus:bg-[#191919]"/>
+        <div class="flex flex-col gap-6 w-full md:w-2/3 lg:w-1/2 rounded-xl border border-white/10 p-4">
+            <div class="flex flex-col gap-2">
+                <p>Наименование иконки</p>
+                <FormKit v-model="servicesForm.icon" validation="required" messages-class="text-[#E9556D] font-Cormorant" type="text" placeholder="Иконка" name="Иконка" outer-class="w-full" input-class="focus:outline-none px-4 py-2 bg-transparent rounded-xl border border-white/15 w-full transition-all duration-500 focus:border-white focus:bg-[#191919]"/>
+            </div>
+            <div class="flex items-center gap-2">
+                <p>Отображение иконки</p>
+                <p>-</p>
+                <Icon class="text-3xl text-[#673ab7]" :name="servicesForm.icon"/>
+            </div>
+            <NuxtLink target="_blank" class="w-fit flex flex-col after:w-full after:h-px after:bg-white after:transition-all after:duration-500 hover:after:w-0" to="https://icon-sets.iconify.design/">Список доступных иконок</NuxtLink>
+        </div>
+        <FormKit v-model="servicesForm.shortDesc" validation="required" messages-class="text-[#E9556D] font-Cormorant" type="textarea" placeholder="Краткое описание" name="Краткое описание" outer-class="w-full md:w-2/3 lg:w-1/2" input-class="focus:outline-none px-4 py-2 bg-transparent rounded-xl border border-white/15 w-full transition-all duration-500 focus:border-white focus:bg-[#191919]"/>
+        <FormKit v-model="servicesForm.fullDesc" validation="required" messages-class="text-[#E9556D] font-Cormorant" type="textarea" placeholder="Полное описание" name="Полное описание" outer-class="w-full md:w-2/3 lg:w-1/2" input-class="focus:outline-none px-4 py-2 bg-transparent rounded-xl border border-white/15 w-full transition-all duration-500 focus:border-white focus:bg-[#191919]"/>
+        <div class="flex gap-4 flex-col w-full md:w-2/3 lg:w-1/2 rounded-xl border border-white/10 p-4" v-for="(advantage, index) in servicesForm.advantages" :key="index">
+            <div class="flex items-center justify-between gap-4">
+                <p>Преимущество № {{ index+1 }}</p>
+                <button @click="removeAdvantage(index)" type="button">
+                    <Icon class="text-3xl" name="material-symbols:delete-forever-rounded"/>
+                </button>
+            </div>
+            <FormKit v-model="servicesForm.advantages[index].title" validation="required" messages-class="text-[#E9556D] font-Cormorant" type="text" placeholder="Наименование преимущества" outer-class="w-full" input-class="focus:outline-none px-4 py-2 bg-transparent rounded-xl border border-white/15 w-full transition-all duration-500 focus:border-white focus:bg-[#191919]"/>
+            <FormKit v-model="servicesForm.advantages[index].description" validation="required" messages-class="text-[#E9556D] font-Cormorant" type="textarea" placeholder="Описание преимущества" outer-class="w-full" input-class="focus:outline-none px-4 py-2 bg-transparent rounded-xl border border-white/15 w-full transition-all duration-500 focus:border-white focus:bg-[#191919]"/>
+        </div>
+        <div class="flex items-center justify-between gap-4">
+            <button @click="addAdvantage()" type="button" class="px-4 py-2 border border-[#673ab7] hover:bg-[#673ab7] hover:text-white rounded-full w-fit text-center transition-all duration-500 text-[#673ab7] bg-transparent">Добавить преимущество</button>
+            <button type="submit" class="px-4 py-2 border border-[#673ab7] bg-[#673ab7] text-white rounded-full w-fit text-center transition-all duration-500 hover:text-[#673ab7] hover:bg-transparent">Сохранить</button>
+        </div>
+    </FormKit>
+
     <!-- Редактирование услуг -->
     <div class="flex flex-col gap-6">
         <p class="mainHeading">Редактирование услуг</p>
@@ -84,7 +118,7 @@
 	})
 
 
-    /* подключение БД и получение заявок */
+    /* подключение БД и получение услуг */
     const supabase = useSupabaseClient()
 
     const { data:services, error:servicesError } = await supabase
@@ -93,6 +127,41 @@
     .order('id', { ascending: true })
 
     const servicesTitles = ref([...services.map(service => service.title)]) // Наименования услуг
+
+
+    /* создание формы услуги */
+    const servicesForm = ref({
+        title: "",
+        icon: "",
+        shortDesc: "",
+        fullDesc: "",
+        advantages: ref([{ title: '', description: '' }])
+    }) 
+
+
+    /* изменение преимуществ */
+    const addAdvantage = () => {
+        servicesForm.value.advantages.push({ title: '', description: '' })
+    }
+
+    const removeAdvantage = (index) => {
+        servicesForm.value.advantages.splice(index, 1)
+    }
+
+
+    /* обновление данных */
+    const addService = async () => {    
+        const { data, error } = await supabase
+        .from('services')
+        .insert(servicesForm.value)
+           
+        if(error) {
+            console.log(error)
+            showMessage("Произошла ошибка!", false)   
+        } else {            
+            showMessage("Услуга добавлена!", true)   
+        }
+    }
 
 
     /* заявки */

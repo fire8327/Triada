@@ -1,7 +1,7 @@
 <template>
-    <!-- Форма редактирование товара -->
+    <!-- Форма редактирование услуги -->
     <FormKit @submit="updateServices" type="form" :actions="false" messages-class="hidden" form-class="flex flex-col gap-6 items-center justify-center">
-        <p class="text-3xl font-Cormorant uppercase tracking-widest font-semibold">Редактирование товара</p>
+        <p class="mainHeading">Редактирование услуги</p>
         <FormKit v-model="services.title" validation="required" messages-class="text-[#E9556D] font-Cormorant" type="text" placeholder="Наименование услуги" name="Наименование услуги" outer-class="w-full md:w-2/3 lg:w-1/2" input-class="focus:outline-none px-4 py-2 bg-transparent rounded-xl border border-white/15 w-full transition-all duration-500 focus:border-white focus:bg-[#191919]"/>
         <div class="flex flex-col gap-6 w-full md:w-2/3 lg:w-1/2 rounded-xl border border-white/10 p-4">
             <div class="flex flex-col gap-2">
