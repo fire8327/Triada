@@ -170,7 +170,7 @@
     const removeStage = (index) => removeItem(computed(() => servicesForm.value.stages), index)
 
 
-    /* обновление данных */
+    /* добавление данных */
     const addService = async () => {    
         const { data, error } = await supabase
         .from('services')
