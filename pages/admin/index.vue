@@ -15,8 +15,14 @@
             </div>
             <NuxtLink target="_blank" class="w-fit flex flex-col after:w-full after:h-px after:bg-white after:transition-all after:duration-500 hover:after:w-0" to="https://icon-sets.iconify.design/">Список доступных иконок</NuxtLink>
         </div>
-        <FormKit validation="required" messages-class="text-[#E9556D] font-Cormorant" type="file" label="Изображение 1" name="Изображение 1" outer-class="w-full md:w-2/3 lg:w-1/2" input-class="focus:outline-none px-4 py-2 bg-transparent rounded-xl border border-white/15 w-full transition-all duration-500 focus:border-white focus:bg-[#191919]"/>
-        <FormKit validation="required" messages-class="text-[#E9556D] font-Cormorant" type="file" label="Изображение 2" name="Изображение 2" outer-class="w-full md:w-2/3 lg:w-1/2" input-class="focus:outline-none px-4 py-2 bg-transparent rounded-xl border border-white/15 w-full transition-all duration-500 focus:border-white focus:bg-[#191919]"/>
+        <FormKit validation="required" accept="image/*" @change="(e) => {
+        files.servicesMain = e.target.files[0];
+        console.log('Выбрано main:', files.servicesMain); // Логирование
+      }" messages-class="text-[#E9556D] font-Cormorant" type="file" :validation-messages="{required: 'Основное изображение обязательно'}" label="Основное изображение" name="servicesMain" outer-class="w-full md:w-2/3 lg:w-1/2" input-class="focus:outline-none px-4 py-2 bg-transparent rounded-xl border border-white/15 w-full transition-all duration-500 focus:border-white focus:bg-[#191919]"/>
+        <FormKit validation="required" accept="image/*" @change="(e) => {
+        files.servicesAction = e.target.files[0];
+        console.log('Выбрано action:', files.servicesAction); // Логирование
+      }" messages-class="text-[#E9556D] font-Cormorant" type="file" :validation-messages="{required: 'Дополнительное изображение обязательно'}" label="Дополнительное изображение" name="servicesAction" outer-class="w-full md:w-2/3 lg:w-1/2" input-class="focus:outline-none px-4 py-2 bg-transparent rounded-xl border border-white/15 w-full transition-all duration-500 focus:border-white focus:bg-[#191919]"/>
         <FormKit v-model="servicesForm.shortDesc" validation="required" messages-class="text-[#E9556D] font-Cormorant" type="textarea" placeholder="Краткое описание" name="Краткое описание" outer-class="w-full md:w-2/3 lg:w-1/2" input-class="focus:outline-none px-4 py-2 bg-transparent rounded-xl border border-white/15 w-full transition-all duration-500 focus:border-white focus:bg-[#191919]"/>
         <FormKit v-model="servicesForm.fullDesc" validation="required" messages-class="text-[#E9556D] font-Cormorant" type="textarea" placeholder="Полное описание" name="Полное описание" outer-class="w-full md:w-2/3 lg:w-1/2" input-class="focus:outline-none px-4 py-2 bg-transparent rounded-xl border border-white/15 w-full transition-all duration-500 focus:border-white focus:bg-[#191919]"/>
         <div class="flex gap-4 flex-col w-full md:w-2/3 lg:w-1/2 rounded-xl border border-white/10 p-4" v-for="(advantage, index) in servicesForm.advantages" :key="index">
@@ -146,9 +152,17 @@
         icon: "",
         shortDesc: "",
         fullDesc: "",
+        servicesMain: "", 
+        servicesAction: "",
         advantages: ref([{ title: '', description: '' }]),
         stages: ref([{ title: '', description: '' }])
     }) 
+
+    //изображения
+    const files = ref({
+        servicesMain: null, 
+        servicesAction: null
+    })
 
 
     /* изменение преимуществ и стадий */
@@ -171,16 +185,70 @@
 
 
     /* добавление данных */
-    const addService = async () => {    
-        const { data, error } = await supabase
-        .from('services')
-        .insert(servicesForm.value)
-           
-        if(error) {
-            console.log(error)
-            showMessage("Произошла ошибка!", false)   
-        } else {            
-            showMessage("Услуга добавлена!", true)   
+    // Функция очистки формы
+    const resetForm = () => {
+        servicesForm.value = {
+            title: "",
+            icon: "",
+            shortDesc: "",
+            fullDesc: "",
+            servicesMain: "",
+            servicesAction: "",
+            advantages: [{ title: '', description: '' }],
+            stages: [{ title: '', description: '' }]
+        }
+        files.value = {
+            servicesMain: null,
+            servicesAction: null
+        }
+    }
+
+    const addService = async () => {
+        try {
+            // Параллельная загрузка файлов
+            const uploadResults = await Promise.all(
+                Object.entries(files.value).map(async ([key, file]) => {
+                    if (!file) {
+                        console.error(`Файл для ${key} не выбран`)
+                        return null
+                    }
+
+                    const extension = file.name.split('.').pop()
+                    const uniqueName = `${Date.now()}_${key}_${Math.random()
+                        .toString(36)
+                        .substring(2, 7)}.${extension}`
+
+                    const { data, error } = await supabase.storage
+                        .from('images')
+                        .upload(`${key}/${uniqueName}`, file)
+
+                    if (error) throw error
+
+                    return { key, fileName: uniqueName } // Возвращаем только имя файла
+                })
+            )
+
+            // Обновляем форму с именами файлов
+            uploadResults.forEach(result => {
+                if (result) {
+                    servicesForm.value[result.key] = result.fileName
+                }
+            })
+
+            // Вставка данных в таблицу
+            const { data, error } = await supabase
+                .from('services')
+                .insert([servicesForm.value])
+                .select()
+
+            if (error) throw error
+
+            showMessage("Услуга добавлена!", true)
+            resetForm()
+
+        } catch (error) {
+            console.error("Ошибка:", error)
+            showMessage(error.message || "Ошибка при сохранении", false)
         }
     }
 
