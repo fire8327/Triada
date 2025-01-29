@@ -15,6 +15,8 @@
             </div>
             <NuxtLink target="_blank" class="w-fit flex flex-col after:w-full after:h-px after:bg-white after:transition-all after:duration-500 hover:after:w-0" to="https://icon-sets.iconify.design/">Список доступных иконок</NuxtLink>
         </div>
+        <FormKit validation="required" messages-class="text-[#E9556D] font-Cormorant" type="file" label="Изображение 1" name="Изображение 1" outer-class="w-full md:w-2/3 lg:w-1/2" input-class="focus:outline-none px-4 py-2 bg-transparent rounded-xl border border-white/15 w-full transition-all duration-500 focus:border-white focus:bg-[#191919]"/>
+        <FormKit validation="required" messages-class="text-[#E9556D] font-Cormorant" type="file" label="Изображение 2" name="Изображение 2" outer-class="w-full md:w-2/3 lg:w-1/2" input-class="focus:outline-none px-4 py-2 bg-transparent rounded-xl border border-white/15 w-full transition-all duration-500 focus:border-white focus:bg-[#191919]"/>
         <FormKit v-model="servicesForm.shortDesc" validation="required" messages-class="text-[#E9556D] font-Cormorant" type="textarea" placeholder="Краткое описание" name="Краткое описание" outer-class="w-full md:w-2/3 lg:w-1/2" input-class="focus:outline-none px-4 py-2 bg-transparent rounded-xl border border-white/15 w-full transition-all duration-500 focus:border-white focus:bg-[#191919]"/>
         <FormKit v-model="servicesForm.fullDesc" validation="required" messages-class="text-[#E9556D] font-Cormorant" type="textarea" placeholder="Полное описание" name="Полное описание" outer-class="w-full md:w-2/3 lg:w-1/2" input-class="focus:outline-none px-4 py-2 bg-transparent rounded-xl border border-white/15 w-full transition-all duration-500 focus:border-white focus:bg-[#191919]"/>
         <div class="flex gap-4 flex-col w-full md:w-2/3 lg:w-1/2 rounded-xl border border-white/10 p-4" v-for="(advantage, index) in servicesForm.advantages" :key="index">
@@ -27,10 +29,19 @@
             <FormKit v-model="servicesForm.advantages[index].title" validation="required" messages-class="text-[#E9556D] font-Cormorant" type="text" placeholder="Наименование преимущества" outer-class="w-full" input-class="focus:outline-none px-4 py-2 bg-transparent rounded-xl border border-white/15 w-full transition-all duration-500 focus:border-white focus:bg-[#191919]"/>
             <FormKit v-model="servicesForm.advantages[index].description" validation="required" messages-class="text-[#E9556D] font-Cormorant" type="textarea" placeholder="Описание преимущества" outer-class="w-full" input-class="focus:outline-none px-4 py-2 bg-transparent rounded-xl border border-white/15 w-full transition-all duration-500 focus:border-white focus:bg-[#191919]"/>
         </div>
-        <div class="flex items-center justify-between gap-4">
-            <button @click="addAdvantage()" type="button" class="px-4 py-2 border border-[#673ab7] hover:bg-[#673ab7] hover:text-white rounded-full w-fit text-center transition-all duration-500 text-[#673ab7] bg-transparent">Добавить преимущество</button>
-            <button type="submit" class="px-4 py-2 border border-[#673ab7] bg-[#673ab7] text-white rounded-full w-fit text-center transition-all duration-500 hover:text-[#673ab7] hover:bg-transparent">Сохранить</button>
+        <button @click="addAdvantage()" type="button" class="px-4 py-2 border border-[#673ab7] hover:bg-[#673ab7] hover:text-white rounded-full w-fit text-center transition-all duration-500 text-[#673ab7] bg-transparent">Добавить преимущество</button>
+        <div class="flex gap-4 flex-col w-full md:w-2/3 lg:w-1/2 rounded-xl border border-white/10 p-4" v-for="(stage, index) in servicesForm.stages" :key="index">
+            <div class="flex items-center justify-between gap-4">
+                <p>Стадия № {{ index+1 }}</p>
+                <button @click="removeStage(index)" type="button">
+                    <Icon class="text-3xl" name="material-symbols:delete-forever-rounded"/>
+                </button>
+            </div>
+            <FormKit v-model="servicesForm.stages[index].title" validation="required" messages-class="text-[#E9556D] font-Cormorant" type="text" placeholder="Наименование стадии" outer-class="w-full" input-class="focus:outline-none px-4 py-2 bg-transparent rounded-xl border border-white/15 w-full transition-all duration-500 focus:border-white focus:bg-[#191919]"/>
+            <FormKit v-model="servicesForm.stages[index].description" validation="required" messages-class="text-[#E9556D] font-Cormorant" type="textarea" placeholder="Описание стадии" outer-class="w-full" input-class="focus:outline-none px-4 py-2 bg-transparent rounded-xl border border-white/15 w-full transition-all duration-500 focus:border-white focus:bg-[#191919]"/>
         </div>
+        <button @click="addStage()" type="button" class="px-4 py-2 border border-[#673ab7] hover:bg-[#673ab7] hover:text-white rounded-full w-fit text-center transition-all duration-500 text-[#673ab7] bg-transparent">Добавить стадию</button>
+        <button type="submit" class="px-4 py-2 mt-10 border border-[#673ab7] bg-[#673ab7] text-white rounded-full w-fit text-center transition-all duration-500 hover:text-[#673ab7] hover:bg-transparent">Сохранить</button>
     </FormKit>
 
     <!-- Редактирование услуг -->
@@ -135,18 +146,28 @@
         icon: "",
         shortDesc: "",
         fullDesc: "",
-        advantages: ref([{ title: '', description: '' }])
+        advantages: ref([{ title: '', description: '' }]),
+        stages: ref([{ title: '', description: '' }])
     }) 
 
 
-    /* изменение преимуществ */
-    const addAdvantage = () => {
-        servicesForm.value.advantages.push({ title: '', description: '' })
+    /* изменение преимуществ и стадий */
+    const addItem = (list) => {
+        list.value.push({ title: '', description: '' })
     }
 
-    const removeAdvantage = (index) => {
-        servicesForm.value.advantages.splice(index, 1)
+    const removeItem = (list, index) => {
+        if (list.value.length > 1) {
+            list.value.splice(index, 1)
+        }
     }
+
+    // Используем универсальные функции для преимуществ и стадий
+    const addAdvantage = () => addItem(computed(() => servicesForm.value.advantages))
+    const removeAdvantage = (index) => removeItem(computed(() => servicesForm.value.advantages), index)
+
+    const addStage = () => addItem(computed(() => servicesForm.value.stages))
+    const removeStage = (index) => removeItem(computed(() => servicesForm.value.stages), index)
 
 
     /* обновление данных */
