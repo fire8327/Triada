@@ -41,7 +41,10 @@
             <FormKit :name="`Описание стадии ${index+1}`" v-model="servicesForm.stages[index].description" validation="required" messages-class="text-[#E9556D] font-Cormorant" type="textarea" placeholder="Описание стадии" outer-class="w-full" input-class="focus:outline-none px-4 py-2 bg-transparent rounded-xl border border-white/15 w-full transition-all duration-500 focus:border-white focus:bg-[#191919]"/>
         </div>
         <button @click="addStage()" type="button" class="px-4 py-2 border border-[#673ab7] hover:bg-[#673ab7] hover:text-white rounded-full w-fit text-center transition-all duration-500 text-[#673ab7] bg-transparent">Добавить стадию</button>
-        <button type="submit" class="px-4 py-2 mt-10 border border-[#673ab7] bg-[#673ab7] text-white rounded-full w-fit text-center transition-all duration-500 hover:text-[#673ab7] hover:bg-transparent">Сохранить</button>
+        <button :disabled="isSubmitting" :class="isSubmitting ? 'opacity-50' : 'hover:text-[#673ab7] hover:bg-transparent'" type="submit" class="px-4 py-2 mt-10 border border-[#673ab7] bg-[#673ab7] text-white rounded-full w-fit text-center transition-all duration-500">
+            <span v-if="!isSubmitting">Добавить</span>
+            <span v-else>Добавление...</span>
+        </button>
     </FormKit>
 
     <!-- Редактирование услуг -->
@@ -197,9 +200,13 @@
         }
     }
 
-    //функция отправки
+    // Реактивная переменная для отслеживания состояния отправки
+    const isSubmitting = ref(false)
+
+    // Функция отправки
     const addService = async () => {
         try {
+            isSubmitting.value = true
             // Параллельная загрузка файлов
             const uploadResults = await Promise.all(
                 Object.entries(files.value).map(async ([key, file]) => {
@@ -244,6 +251,8 @@
         } catch (error) {
             console.error("Ошибка:", error)
             showMessage(error.message || "Ошибка при сохранении", false)
+        } finally {
+            isSubmitting.value = false
         }
     }
 

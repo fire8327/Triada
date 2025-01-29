@@ -53,7 +53,10 @@
             <FormKit :name="`Описание стадии ${index+1}`" v-model="service.stages[index].description" validation="required" messages-class="text-[#E9556D] font-Cormorant" type="textarea" placeholder="Описание стадии" outer-class="w-full" input-class="focus:outline-none px-4 py-2 bg-transparent rounded-xl border border-white/15 w-full transition-all duration-500 focus:border-white focus:bg-[#191919]"/>
         </div>
         <button @click="addStage()" type="button" class="px-4 py-2 border border-[#673ab7] hover:bg-[#673ab7] hover:text-white rounded-full w-fit text-center transition-all duration-500 text-[#673ab7] bg-transparent">Добавить стадию</button>
-        <button type="submit" class="px-4 py-2 mt-10 border border-[#673ab7] bg-[#673ab7] text-white rounded-full w-fit text-center transition-all duration-500 hover:text-[#673ab7] hover:bg-transparent">Сохранить</button>
+        <button :disabled="isSubmitting" :class="isSubmitting ? 'opacity-50' : 'hover:text-[#673ab7] hover:bg-transparent'" type="submit" class="px-4 py-2 mt-10 border border-[#673ab7] bg-[#673ab7] text-white rounded-full w-fit text-center transition-all duration-500">
+            <span v-if="!isSubmitting">Сохранить</span>
+            <span v-else>Сохранение...</span>
+        </button>
     </FormKit>
 </template>
 
@@ -102,7 +105,6 @@
     }
 
 
-    
     /* создание формы */
     const files = ref({
         servicesMain: null,
@@ -149,10 +151,14 @@
         return publicUrl
     }
 
+    // Реактивная переменная для отслеживания состояния отправки
+    const isSubmitting = ref(false)
+
 
     /* обновление данных */
     const updateService = async () => {
         try {
+            isSubmitting.value = true
             const updates = { ...service.value }
 
             // Обработка изображений
@@ -191,6 +197,8 @@
         } catch (error) {
             console.error('Ошибка обновления:', error)
             showMessage(error.message || 'Ошибка при обновлении данных', false)
+        } finally {
+            isSubmitting.value = false
         }
     }
 
