@@ -19,9 +19,18 @@
 
     <!-- Смена статуса для заявок -->
     <div class="flex flex-col gap-6">
-        <p class="mainHeading">Заявки</p>
+        <div class="flex max-lg:flex-col lg:items-center justify-between gap-4">
+            <p class="mainHeading">Заявки</p>
+            <FormKit type="form" :actions="false" messages-class="hidden" form-class="flex max-md:flex-col gap-4 md:items-center">
+                <FormKit v-model="selectedService" messages-class="text-[#E9556D] font-Cormorant" type="select" :options="servicesTitles" placeholder="Наименование услуги" name="Наименование услуги" outer-class="w-full md:w-2/3 lg:w-1/2" input-class="focus:outline-none px-4 py-2 bg-transparent rounded-xl border border-white/15 w-full transition-all duration-500 focus:border-white focus:bg-[#191919]"/>
+                <div class="flex items-center gap-2 md:gap-4 max-md:w-full">
+                    <button :disabled="!selectedService" type="button" @click="filterBids()" class="px-4 py-2 border border-[#673ab7] bg-[#673ab7] text-white rounded-full w-1/2 md:w-fit text-center transition-all duration-500 " :class="selectedService ? 'hover:text-[#673ab7] hover:bg-transparent' : 'opacity-50'">Применить</button>
+                    <button :disabled="!selectedService" type="button" @click="cancelFilterBids()" class="px-4 py-2 border border-[#673ab7] bg-transparent text-[#673ab7] rounded-full w-1/2 md:w-fit text-center transition-all duration-500" :class="selectedService ? 'hover:bg-[#673ab7] hover:text-white' : 'opacity-50'">Отменить</button>
+                </div>
+            </FormKit>
+        </div>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            <div class="flex flex-col gap-4 rounded-xl border border-white/10 bg-[#252525] shadow-[0px_0px_13px_-7px_white] p-4" v-for="bid in refBids" :key="bid.id">
+            <div class="flex flex-col gap-4 rounded-xl border border-white/10 bg-[#252525] shadow-[0px_0px_13px_-7px_white] p-4" v-for="bid in filteredBids" :key="bid.id">
                 <div v-if="showConfirmButton === bid.id" class="flex flex-col gap-2 text-lg">
                     <button @click="updateBidStatus(bid.id, 'Отменена'); showConfirmButton = null"
                         class="px-4 py-1.5 border border-red-500 bg-red-500 text-white rounded-full w-fit text-center transition-all duration-500 hover:text-red-500 hover:bg-transparent">
@@ -83,6 +92,8 @@
     .select('*')   
     .order('id', { ascending: true })
 
+    const servicesTitles = ref([...services.map(service => service.title)]) // Наименования услуг
+
 
     /* заявки */
     const { data:bids, error:bidsError } = await supabase
@@ -90,7 +101,30 @@
     .select('*, services(*), users(*)')   
     .order('id', { ascending: true })
     
-    const refBids = ref(bids)
+    const refBids = ref(bids) // Исходный список заявок
+    const filteredBids = ref([...refBids.value]) // Отфильтрованный список заявок
+
+    // Состояние для выбранной услуги
+    const selectedService = ref('')
+
+    // Функция для фильтрации заявок
+    const filterBids = () => {
+        if (!selectedService.value) {
+            // Если поле пустое, показываем все заявки
+            filteredBids.value = [...refBids.value]
+        } else {
+            // Фильтруем заявки по выбранной услуге
+            filteredBids.value = refBids.value.filter((bid) =>
+                bid.services?.title === selectedService.value
+            )
+        }
+    }
+
+    // Функция для сброса фильтрации
+    const cancelFilterBids = () => {
+        selectedService.value = '' // Очищаем выбранное значение
+        filteredBids.value = [...refBids.value] // Показываем все заявки
+    }
 
     
     /* создание сообщений и роутера */
