@@ -135,12 +135,25 @@
     /* подключение БД и получение услуг */
     const supabase = useSupabaseClient()
 
-    const { data:services, error:servicesError } = await supabase
-    .from('services')
-    .select('*')   
-    .order('id', { ascending: true })
+    const services = ref([])
+    const servicesTitles = ref([])
+    const loadServices = async () => {
+        try {
+            const { data, error } = await supabase
+            .from('services')
+            .select('*')   
+            .order('id', { ascending: true })
 
-    const servicesTitles = ref([...services.map(service => service.title)]) // Наименования услуг
+            if (error) throw error
+            
+            services.value = data // Загрузка данных
+            servicesTitles.value = [...services.value.map(service => service.title)] // Наименования услуг
+
+        } catch (error) {
+            console.error('Ошибка загрузки:', error)
+            showMessage('Не удалось загрузить данные', false)
+        }
+    }
 
 
     /* создание формы услуги */
@@ -246,6 +259,7 @@
             if (error) throw error
 
             showMessage("Услуга добавлена!", true)
+            loadServices()
             resetForm()
 
         } catch (error) {
@@ -343,4 +357,10 @@
             showMessage("Отзыв удалён", true)
         }
     }
+
+
+    /* инициализация */
+    onMounted(() => {
+        loadServices()
+    })
 </script>
