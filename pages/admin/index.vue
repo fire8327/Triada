@@ -1,6 +1,6 @@
 <template>
     <!-- Добавление новой услуги -->
-    <FormKit @submit="addService" type="form" :actions="false" messages-class="hidden" form-class="flex flex-col gap-6 items-center justify-center">
+    <FormKit @submit="addService()" type="form" :actions="false" messages-class="hidden" form-class="flex flex-col gap-6 items-center justify-center">
         <p class="mainHeading w-full">Добавление новой услуги</p>
         <FormKit v-model="servicesForm.title" validation="required" messages-class="text-[#E9556D] font-Cormorant" type="text" placeholder="Наименование услуги" name="Наименование услуги" outer-class="w-full md:w-2/3 lg:w-1/2" input-class="focus:outline-none px-4 py-2 bg-transparent rounded-xl border border-white/15 w-full transition-all duration-500 focus:border-white focus:bg-[#191919]"/>
         <div class="flex flex-col gap-6 w-full md:w-2/3 lg:w-1/2 rounded-xl border border-white/10 p-4">
