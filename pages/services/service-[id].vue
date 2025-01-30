@@ -28,7 +28,7 @@
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
             <div v-for="(stage, index) in data[0].stages" class="bg-[#252525] shadow-[0px_0px_13px_-7px_white] rounded-xl p-6 flex flex-col gap-6 items-center text-center border border-white/10">
                 <p class="text-[#673ab7] font-semibold">{{ index+1 }}. {{ stage.title }}</p>
-                <p class="text-gray-400 text-lg mt-auto">{{ stage.desc }}</p>
+                <p class="text-gray-400 text-lg mt-auto">{{ stage.description }}</p>
             </div>
         </div>  
     </div>
