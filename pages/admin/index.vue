@@ -53,9 +53,14 @@
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             <div v-for="service in services"
                 class="flex flex-col gap-4 bg-[#252525] rounded-xl p-6 border border-white/10 shadow-[0px_0px_13px_-7px_white] transition-all duration-500 hover:shadow-none">
-                <NuxtLink :to="`/admin/edit-${service.id}`" class="self-end">
-                    <Icon class="text-3xl text-amber-500" name="material-symbols:edit-outline" />
-                </NuxtLink>
+                <div class="flex items-center gap-4 self-end">
+                    <NuxtLink :to="`/admin/edit-${service.id}`">
+                        <Icon class="text-3xl text-amber-500" name="material-symbols:edit-outline" />
+                    </NuxtLink>
+                    <button :disables="isDeleting" :class="{isDeleting : 'opacity-50'}" @click="deleteService(service.id)" class="transition-all duration-500">
+                        <Icon class="text-3xl text-red-500" name="material-symbols:delete-forever"/>
+                    </button>
+                </div>
                 <div class="w-16 h-16 flex items-center justify-center p-2 bg-[#673ab7] rounded-full">
                     <Icon class="text-3xl" :name="service.icon" />
                 </div>
@@ -259,7 +264,7 @@
             if (error) throw error
 
             showMessage("Услуга добавлена!", true)
-            loadServices()
+            await loadServices()
             resetForm()
 
         } catch (error) {
@@ -267,6 +272,64 @@
             showMessage(error.message || "Ошибка при сохранении", false)
         } finally {
             isSubmitting.value = false
+        }
+    }
+
+
+    /* удаление услуги */
+    const isDeleting = ref(false)
+    const deleteService = async (serviceId) => {
+        try {
+            isDeleting.value = true
+
+            // Получаем данные услуги
+            const { data: serviceData, error: fetchError } = await supabase
+                .from('services')
+                .select('servicesMain, servicesAction')
+                .eq('id', serviceId)
+                .single()
+
+            if (fetchError) throw fetchError
+
+            // Формируем список файлов с указанием папок
+            const filesToDelete = []
+
+            if (serviceData.servicesMain) {
+                filesToDelete.push(`servicesMain/${serviceData.servicesMain}`)
+                console.log('Добавлен файл для удаления:', `servicesMain/${serviceData.servicesMain}`)
+            }
+
+            if (serviceData.servicesAction) {
+                filesToDelete.push(`servicesAction/${serviceData.servicesAction}`)
+                console.log('Добавлен файл для удаления:', `servicesAction/${serviceData.servicesAction}`)
+            }
+
+            // Пакетное удаление файлов
+            if (filesToDelete.length > 0) {
+                const { error: storageError } = await supabase.storage
+                    .from('images')
+                    .remove(filesToDelete)
+
+                if (storageError) throw storageError
+            }
+
+            // Удаляем запись из БД
+            const { error: deleteError } = await supabase
+                .from('services')
+                .delete()
+                .eq('id', serviceId)
+
+            if (deleteError) throw deleteError
+
+            // Обновляем список
+            await loadServices()
+            showMessage('Услуга удалена!', true)
+
+        } catch (error) {
+            console.error('Ошибка:', error)
+            showMessage(`Ошибка удаления: ${error.message}`, false)
+        } finally {
+            isDeleting.value = false
         }
     }
 

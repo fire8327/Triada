@@ -1,4 +1,7 @@
 <template>
+    <!-- Вернуться назад -->
+    <NuxtLink to="/admin" class="self-start px-4 py-2 rounded-xl border border-white/10 shadow-[0px_0px_13px_-7px_white] bg-[#191919] w-fit">Вернуться назад</NuxtLink>
+
     <!-- Редактирование услуги -->
     <FormKit @submit="updateService()" type="form" :actions="false" messages-class="hidden" form-class="flex flex-col gap-6 items-center justify-center">
         <p class="mainHeading w-full">Редактирование услуги</p>
